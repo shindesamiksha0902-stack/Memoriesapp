@@ -670,28 +670,39 @@ function filterAlbum(name){switchTab('all');setTimeout(()=>{document.getElementB
 
 // ── FILE UPLOAD with auto-date ──
 function handleDrop(e){e.preventDefault();handleFiles(e.dataTransfer.files)}
-function handleFiles(files){
+
+function compressImage(file, maxW=1200, quality=0.75){
+  return new Promise(resolve=>{
+    if(!file.type.startsWith('image')){const r=new FileReader();r.onload=e=>resolve({dataUrl:e.target.result,type:file.type});r.readAsDataURL(file);return}
+    const img=new Image();
+    const url=URL.createObjectURL(file);
+    img.onload=()=>{
+      URL.revokeObjectURL(url);
+      let w=img.width,h=img.height;
+      if(w>maxW){h=Math.round(h*maxW/w);w=maxW}
+      const canvas=document.createElement('canvas');
+      canvas.width=w;canvas.height=h;
+      canvas.getContext('2d').drawImage(img,0,0,w,h);
+      resolve({dataUrl:canvas.toDataURL('image/jpeg',quality),type:'image/jpeg'});
+    };
+    img.src=url;
+  });
+}
+
+async function handleFiles(files){
   pendingFiles=[];const prev=document.getElementById('file-previews');prev.innerHTML='';
   let latestDate=null;
-  Array.from(files).forEach(file=>{
-    // try to get date from file lastModified
+  for(const file of Array.from(files)){
     const fileDate=new Date(file.lastModified);
     if(!latestDate||fileDate>latestDate)latestDate=fileDate;
-    const r=new FileReader();
-    r.onload=e=>{
-      pendingFiles.push({dataUrl:e.target.result,type:file.type,name:file.name});
-      if(file.type.startsWith('image')){const img=document.createElement('img');img.src=e.target.result;prev.appendChild(img)}
-      else{const v=document.createElement('video');v.src=e.target.result;v.muted=true;v.style.cssText='width:80px;height:64px;object-fit:cover;border-radius:10px;border:2px solid var(--vl)';prev.appendChild(v)}
-    };
-    r.readAsDataURL(file);
-  });
+    const compressed=await compressImage(file);
+    pendingFiles.push({dataUrl:compressed.dataUrl,type:compressed.type,name:file.name});
+    if(file.type.startsWith('image')){const img=document.createElement('img');img.src=compressed.dataUrl;img.style.cssText='width:80px;height:64px;object-fit:cover;border-radius:10px;border:2px solid var(--vl)';prev.appendChild(img)}
+    else{const v=document.createElement('video');v.src=compressed.dataUrl;v.muted=true;v.style.cssText='width:80px;height:64px;object-fit:cover;border-radius:10px;border:2px solid var(--vl)';prev.appendChild(v)}
+  }
   if(files.length){
     if(!document.getElementById('inp-title').value)document.getElementById('inp-title').value=files[0].name.replace(/\.[^.]+$/,'');
-    // auto-set date from file
-    if(latestDate){
-      const d=latestDate.toISOString().split('T')[0];
-      document.getElementById('inp-date').value=d;
-    }
+    if(latestDate)document.getElementById('inp-date').value=latestDate.toISOString().split('T')[0];
   }
 }
 
@@ -768,21 +779,15 @@ function openEdit(){
   hide('modal-detail');show('modal-edit');
 }
 
-function handleEditFile(files){
+async function handleEditFile(files){
   if(!files.length)return;
   const file=files[0];
-  const r=new FileReader();
-  r.onload=e=>{
-    editNewFile={dataUrl:e.target.result,type:file.type};
-    // update preview
-    const wrap=document.getElementById('edit-media-preview-wrap');
-    if(file.type.startsWith('video'))wrap.innerHTML=`<video class="edit-media-preview" src="${e.target.result}" controls muted></video>`;
-    else wrap.innerHTML=`<img class="edit-media-preview" src="${e.target.result}" alt="new">`;
-    // auto date
-    const d=new Date(file.lastModified).toISOString().split('T')[0];
-    document.getElementById('edit-date').value=d;
-  };
-  r.readAsDataURL(file);
+  const compressed=await compressImage(file);
+  editNewFile={dataUrl:compressed.dataUrl,type:compressed.type};
+  const wrap=document.getElementById('edit-media-preview-wrap');
+  if(file.type.startsWith('video'))wrap.innerHTML=`<video class="edit-media-preview" src="${compressed.dataUrl}" controls muted></video>`;
+  else wrap.innerHTML=`<img class="edit-media-preview" src="${compressed.dataUrl}" alt="new">`;
+  document.getElementById('edit-date').value=new Date(file.lastModified).toISOString().split('T')[0];
 }
 
 async function saveEdit(){
