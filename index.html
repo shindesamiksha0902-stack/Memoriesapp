@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
 <meta name="apple-mobile-web-app-title" content="memories"/>
 <link rel="apple-touch-icon" href="/public/icons/icon-192.png"/>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Satisfy&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{--bg:#F8F4FF;--bg2:#EDE9FE;--bg3:#F5F0FF;--violet:#6D28D9;--vl:#DDD6FE;--vp:#EDE9FE;--pink:#EC4899;--pl:#FBCFE8;--pp:#FDF2F8;--gold:#F59E0B;--gl:#FDE68A;--gp:#FFFBEB;--text:#2D1459;--muted:#9F7AEA;--white:#fff;--sh:0 4px 24px rgba(109,40,217,.10);--sh2:0 8px 32px rgba(109,40,217,.18);--r-sm:10px;--r-md:16px;--r-lg:22px;--r-xl:30px}
@@ -20,7 +20,7 @@ body::before{content:'';position:fixed;top:-120px;right:-120px;width:400px;heigh
 body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;height:350px;background:radial-gradient(circle,rgba(109,40,217,.10),transparent 70%);pointer-events:none;z-index:0}
 .hidden{display:none!important}
 .loading-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999;flex-direction:column;gap:12px}
-.loading-logo{font-family:'Satisfy',cursive;font-size:34px;color:var(--violet)}
+.loading-logo{font-family:'Playfair Display',serif;font-size:34px;color:var(--violet)}
 .loading-logo .pk{color:var(--pink)}.loading-logo .gd{color:var(--gold)}
 .spinner{width:32px;height:32px;border:3px solid var(--vl);border-top-color:var(--violet);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -30,7 +30,7 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 /* AUTH */
 .auth-wrap{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem}
 .auth-card{background:var(--white);border:2px solid var(--vl);border-radius:var(--r-xl);padding:2.5rem 2rem;width:100%;max-width:400px;box-shadow:var(--sh)}
-.auth-logo{font-family:'Satisfy',cursive;font-size:32px;color:var(--violet);text-align:center;margin-bottom:6px}
+.auth-logo{font-family:'Playfair Display',serif;font-size:32px;color:var(--violet);text-align:center;margin-bottom:6px}
 .auth-logo .pk{color:var(--pink)}.auth-logo .gd{color:var(--gold)}
 .auth-sub{text-align:center;font-size:14px;font-weight:700;color:var(--muted);margin-bottom:1.75rem;letter-spacing:.5px}
 .auth-tabs{display:flex;background:var(--bg2);border-radius:40px;padding:4px;border:2px solid var(--vl);margin-bottom:1.5rem}
@@ -48,14 +48,14 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 /* LOBBY */
 .lobby-wrap{position:relative;z-index:1;min-height:100vh;padding:2rem 1.25rem;max-width:960px;margin:0 auto}
 .lobby-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:10px}
-.lobby-logo{font-family:'Satisfy',cursive;font-size:26px;color:var(--violet)}
+.lobby-logo{font-family:'Playfair Display',serif;font-size:26px;color:var(--violet)}
 .lobby-logo .pk{color:var(--pink)}.lobby-logo .gd{color:var(--gold)}
 .user-pill{display:flex;align-items:center;gap:8px;background:var(--white);border:2px solid var(--vl);border-radius:40px;padding:6px 14px}
 .user-pill span{font-size:14px;font-weight:700;color:var(--muted)}
 .btn-logout{background:transparent;border:none;font-size:14px;font-weight:700;color:var(--muted);cursor:pointer;font-family:'Outfit',sans-serif}
 .btn-logout:hover{color:var(--pink)}
 .lobby-section{margin-bottom:2rem}
-.lobby-section h2{font-family:'Satisfy',cursive;font-size:22px;color:var(--violet);margin-bottom:12px}
+.lobby-section h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--violet);margin-bottom:12px}
 .lobby-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
 .space-card{background:var(--white);border:2px solid var(--vl);border-radius:var(--r-lg);padding:1.25rem;cursor:pointer;transition:all .2s}
 .space-card:hover{transform:translateY(-3px);box-shadow:var(--sh2);border-color:var(--violet)}
@@ -75,7 +75,7 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 .modal-overlay{position:fixed;inset:0;background:rgba(109,40,217,.15);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:1000;padding:1.25rem;animation:fadeIn .2s ease}
 .modal{background:var(--white);border-radius:var(--r-lg);border:2px solid var(--vl);padding:1.75rem;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(109,40,217,.2);animation:slideUp .25s ease}
 .modal-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem}
-.modal-title{font-family:'Satisfy',cursive;font-size:22px;color:var(--violet);line-height:1.3}
+.modal-title{font-family:'Playfair Display',serif;font-size:22px;color:var(--violet);line-height:1.3}
 .btn-close{background:var(--vp);border:2px solid var(--vl);width:32px;height:32px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:17px;flex-shrink:0;transition:all .15s}
 .btn-close:hover{background:var(--violet);color:#fff;border-color:var(--violet)}
 .emoji-grid{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
@@ -87,7 +87,7 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 .topbar-left{display:flex;align-items:center;gap:12px}
 .back-btn{background:var(--white);border:2px solid var(--vl);border-radius:40px;padding:6px 14px;font-size:14px;font-weight:700;color:var(--muted);cursor:pointer;font-family:'Outfit',sans-serif;transition:all .15s}
 .back-btn:hover{border-color:var(--violet);color:var(--violet)}
-.logo{font-family:'Satisfy',cursive;font-size:22px;color:var(--violet)}
+.logo{font-family:'Playfair Display',serif;font-size:22px;color:var(--violet)}
 .logo .pk{color:var(--pink)}.logo .gd{color:var(--gold)}
 .space-badge{background:var(--vp);border:2px solid var(--vl);border-radius:40px;padding:4px 12px;font-size:12px;font-weight:700;color:var(--muted);margin-top:3px;display:inline-block}
 .space-badge strong{color:var(--violet)}
@@ -165,7 +165,7 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 .save-msg.show{display:block}
 /* TIMELINE */
 .timeline-group{margin-bottom:2.5rem}
-.timeline-month{font-family:'Satisfy',cursive;font-size:22px;color:var(--violet);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--vl);display:flex;align-items:center;gap:10px}
+.timeline-month{font-family:'Playfair Display',serif;font-size:22px;color:var(--violet);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--vl);display:flex;align-items:center;gap:10px}
 .timeline-month .dot{width:8px;height:8px;border-radius:50%;background:var(--pink);flex-shrink:0}
 /* ALBUMS */
 .albums-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
@@ -191,14 +191,18 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 .det-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .empty-state{text-align:center;padding:3.5rem 1rem;color:var(--muted)}
 .empty-state .ei{font-size:50px;margin-bottom:12px;display:block}
-.empty-state p{font-family:'Satisfy',cursive;font-size:20px;color:var(--violet)}
+.empty-state p{font-family:'Playfair Display',serif;font-size:20px;color:var(--violet)}
 .no-results{column-span:all;text-align:center;padding:3rem 1rem}
-.no-results p{font-family:'Satisfy',cursive;font-size:20px;color:var(--violet)}
+.no-results p{font-family:'Playfair Display',serif;font-size:20px;color:var(--violet)}
 .info-banner{background:var(--vp);border:2px solid var(--vl);border-radius:var(--r-md);padding:10px 14px;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:1.25rem}
 .info-banner strong{color:var(--violet)}
-.section-heading{font-family:'Satisfy',cursive;font-size:22px;color:var(--violet);margin-bottom:1.25rem}
+.section-heading{font-family:'Playfair Display',serif;font-size:22px;color:var(--violet);margin-bottom:1.25rem}
 .settings-btn{background:var(--vp);border:2px solid var(--vl);border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .settings-btn:hover{border-color:var(--violet)}
+.space-info{display:flex;flex-direction:column;gap:2px}
+.topbar-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.slideshow-btn{background:var(--violet);border:none;color:#fff;padding:7px 14px;border-radius:40px;cursor:pointer;font-size:12px;font-weight:700;font-family:'Outfit',sans-serif;transition:all .15s;white-space:nowrap}
+.slideshow-btn:hover{background:#5B21B6}
 /* EDIT MODAL extra previews */
 .edit-media-preview{width:100%;max-height:200px;object-fit:cover;border-radius:var(--r-md);border:2px solid var(--vl);margin-bottom:1rem}
 ::-webkit-scrollbar{width:6px}
@@ -276,7 +280,7 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
       <button class="btn-close" onclick="document.getElementById('modal-settings').classList.add('hidden')">✕</button>
     </div>
     <div style="background:var(--vp);border:2px solid var(--vl);border-radius:var(--r-md);padding:1rem;margin-bottom:1rem;text-align:center">
-      <div style="font-family:'Satisfy',cursive;font-size:28px;color:var(--violet);letter-spacing:4px" id="settings-code"></div>
+      <div style="font-family:'Playfair Display',serif;font-size:28px;color:var(--violet);letter-spacing:4px" id="settings-code"></div>
       <div style="font-size:12px;font-weight:700;color:var(--muted);margin-top:4px">share this code to invite people</div>
       <button class="btn-secondary" style="margin-top:8px;height:34px;font-size:13px" onclick="copyCode()">copy code</button>
     </div>
@@ -321,7 +325,7 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
   <div class="topbar">
     <div class="topbar-left">
       <button class="back-btn" onclick="goToLobby()">← spaces</button>
-      <div>
+      <div class="space-info">
         <div style="display:flex;align-items:center;gap:8px">
           <div class="logo" id="app-space-title"></div>
           <button class="settings-btn" onclick="openSettings()" title="Space Settings">⚙️</button>
@@ -329,8 +333,9 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
         <div class="space-badge" id="app-space-code"></div>
       </div>
     </div>
-    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    <div class="topbar-right">
       <div class="live-tag"><span class="live-dot"></span><span id="live-label">live</span></div>
+      <button class="slideshow-btn" onclick="openSlideshow()" title="Slideshow">▶ slideshow</button>
       <div class="tabs">
         <button class="tab active" onclick="switchTab('all')">all</button>
         <button class="tab" onclick="switchTab('timeline')">timeline</button>
@@ -815,16 +820,87 @@ async function deleteMemory(){
   if(!error){memories=memories.filter(m=>m.id!==currentDetailId);hide('modal-detail');document.body.style.overflow='';refreshView()}
 }
 
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){['modal-detail','modal-settings','modal-create','modal-edit'].forEach(id=>{if(!document.getElementById(id).classList.contains('hidden')){document.getElementById(id).classList.add('hidden');document.body.style.overflow=''}})}});
+// ── SLIDESHOW ──
+let ssIndex=0, ssItems=[], ssTimer=null, ssPlaying=true;
+
+function openSlideshow(){
+  ssItems=getFiltered().filter(m=>m.data_url);
+  if(!ssItems.length){alert('no memories with photos to show!');return}
+  ssIndex=0;ssPlaying=true;
+  show('modal-slideshow');
+  document.body.style.overflow='hidden';
+  renderSsSlide();
+  startSsTimer();
+}
+
+function closeSlideshow(){
+  hide('modal-slideshow');
+  document.body.style.overflow='';
+  if(ssTimer)clearInterval(ssTimer);
+}
+
+function renderSsSlide(){
+  const m=ssItems[ssIndex];
+  if(!m)return;
+  document.getElementById('ss-title').textContent=m.title||'untitled';
+  document.getElementById('ss-counter').textContent=`${ssIndex+1} / ${ssItems.length}`;
+  document.getElementById('ss-meta').textContent=`${formatDate(m.date)}${m.album?' · '+m.album:''}${m.username?' · '+m.username:''}`;
+  const media=document.getElementById('ss-media');
+  if(isVideo(m.data_url))media.innerHTML=`<video src="${esc(m.data_url)}" autoplay muted loop style="max-width:100%;max-height:60vh;border-radius:12px;object-fit:contain"></video>`;
+  else media.innerHTML=`<img src="${esc(m.data_url)}" style="max-width:100%;max-height:60vh;border-radius:12px;object-fit:contain;animation:fadeIn .4s ease">`;
+  // dots
+  document.getElementById('ss-dots').innerHTML=ssItems.map((_,i)=>`<div style="width:${i===ssIndex?20:6}px;height:6px;border-radius:10px;background:${i===ssIndex?'#fff':'rgba(255,255,255,.3)'};transition:all .3s"></div>`).join('');
+}
+
+function ssNav(dir){
+  ssIndex=(ssIndex+dir+ssItems.length)%ssItems.length;
+  renderSsSlide();
+  if(ssPlaying){if(ssTimer)clearInterval(ssTimer);startSsTimer();}
+}
+
+function startSsTimer(){ssTimer=setInterval(()=>ssNav(1),4000)}
+
+function toggleSsPlay(){
+  ssPlaying=!ssPlaying;
+  document.getElementById('ss-play-btn').textContent=ssPlaying?'⏸ pause':'▶ play';
+  if(ssPlaying)startSsTimer();else if(ssTimer)clearInterval(ssTimer);
+}
+
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('modal-slideshow').classList.contains('hidden')){
+    if(e.key==='ArrowRight')ssNav(1);
+    else if(e.key==='ArrowLeft')ssNav(-1);
+    else if(e.key==='Escape')closeSlideshow();
+  } else if(e.key==='Escape'){['modal-detail','modal-settings','modal-create','modal-edit'].forEach(id=>{if(!document.getElementById(id).classList.contains('hidden')){document.getElementById(id).classList.add('hidden');document.body.style.overflow=''}})}
+});
 
 init();
 </script>
+<!-- SLIDESHOW -->
+<div class="modal-overlay hidden" id="modal-slideshow" style="background:rgba(0,0,0,0.92);z-index:2000" onclick="if(event.target===this)closeSlideshow()">
+  <div style="width:100%;max-width:720px;position:relative;display:flex;flex-direction:column;align-items:center;gap:16px">
+    <div style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 8px">
+      <div id="ss-title" style="font-family:'Playfair Display',serif;font-size:20px;color:#fff;font-weight:600"></div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span id="ss-counter" style="font-size:13px;font-weight:700;color:rgba(255,255,255,.6)"></span>
+        <button onclick="closeSlideshow()" style="background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px">✕</button>
+      </div>
+    </div>
+    <div style="position:relative;width:100%;display:flex;align-items:center;justify-content:center">
+      <button onclick="ssNav(-1)" style="position:absolute;left:0;z-index:10;background:rgba(255,255,255,.15);border:none;color:#fff;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center">‹</button>
+      <div id="ss-media" style="width:100%;max-height:65vh;display:flex;align-items:center;justify-content:center"></div>
+      <button onclick="ssNav(1)" style="position:absolute;right:0;z-index:10;background:rgba(255,255,255,.15);border:none;color:#fff;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center">›</button>
+    </div>
+    <div id="ss-meta" style="font-size:13px;font-weight:600;color:rgba(255,255,255,.6);text-align:center"></div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button id="ss-play-btn" onclick="toggleSsPlay()" style="background:var(--violet);border:none;color:#fff;padding:8px 20px;border-radius:40px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Outfit',sans-serif">⏸ pause</button>
+    </div>
+    <div id="ss-dots" style="display:flex;gap:5px;flex-wrap:wrap;justify-content:center;max-width:300px"></div>
+  </div>
+</div>
+
 <script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('/sw.js').catch(e=>console.log('SW:',e));
-  });
-}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(e=>console.log('SW:',e)))}
 </script>
 </body>
 </html>
