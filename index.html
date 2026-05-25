@@ -539,7 +539,7 @@ async function enterSpace(sp){
   await loadMemories();subscribeRealtime();switchTab('all');
 }
 async function loadMemories(){
-  const {data}=await sb.from('memories').select('*').eq('space_id',currentSpace.id).order('date',{ascending:false});
+  const {data}=await sb.from('memories').select('*').eq('space_id',currentSpace.id).order('created_at',{ascending:false});
   memories=data||[];updateLiveLabel();
 }
 async function updateLiveLabel(){
@@ -550,7 +550,7 @@ async function updateLiveLabel(){
 function subscribeRealtime(){
   if(rtChannel)sb.removeChannel(rtChannel);
   rtChannel=sb.channel(`space-${currentSpace.id}`)
-    .on('postgres_changes',{event:'INSERT',schema:'public',table:'memories',filter:`space_id=eq.${currentSpace.id}`},p=>{if(!memories.find(m=>m.id===p.new.id)){memories.unshift(p.new);memories.sort((a,b)=>new Date(b.date||b.created_at)-new Date(a.date||a.created_at));refreshView()}})
+    .on('postgres_changes',{event:'INSERT',schema:'public',table:'memories',filter:`space_id=eq.${currentSpace.id}`},p=>{if(!memories.find(m=>m.id===p.new.id)){memories.unshift(p.new);memories.sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));refreshView()}})
     .on('postgres_changes',{event:'DELETE',schema:'public',table:'memories',filter:`space_id=eq.${currentSpace.id}`},p=>{memories=memories.filter(m=>m.id!==p.old.id);refreshView()})
     .on('postgres_changes',{event:'UPDATE',schema:'public',table:'memories',filter:`space_id=eq.${currentSpace.id}`},p=>{const i=memories.findIndex(m=>m.id===p.new.id);if(i!==-1)memories[i]=p.new;refreshView()})
     .on('postgres_changes',{event:'*',schema:'public',table:'space_members',filter:`space_id=eq.${currentSpace.id}`},()=>updateLiveLabel())
