@@ -450,12 +450,16 @@ function setErr(id,msg){document.getElementById(id).textContent=msg}
 function randCode(){return Math.random().toString(36).substring(2,8).toUpperCase()}
 function formatDate(d){if(!d)return'';try{return new Date(d+'T12:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}catch{return d}}
 
-// ── THE KEY FIX: unified video detection using media_type field ──
+// ── VIDEO DETECTION: data_url is ground truth, media_type is fallback ──
 function isVideo(m){
   if(!m)return false;
-  // works whether m is a memory object or a raw url string (legacy)
   if(typeof m==='string')return m.startsWith('data:video')||/\.(mp4|mov|webm|ogg)$/i.test(m);
-  // media_type can be 'video', 'video/mp4', 'image', 'image/jpeg' etc.
+  // if we have a data_url, trust it over media_type (fixes old corrupted rows)
+  if(m.data_url){
+    if(m.data_url.startsWith('data:image'))return false;
+    if(m.data_url.startsWith('data:video'))return true;
+  }
+  // fall back to media_type
   return m.media_type==='video'||String(m.media_type||'').startsWith('video');
 }
 
