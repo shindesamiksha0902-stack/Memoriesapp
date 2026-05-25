@@ -199,50 +199,11 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 .section-heading{font-family:'Satisfy',cursive;font-size:22px;color:var(--violet);margin-bottom:1.25rem}
 .settings-btn{background:var(--vp);border:2px solid var(--vl);border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .settings-btn:hover{border-color:var(--violet)}
+/* EDIT MODAL extra previews */
 .edit-media-preview{width:100%;max-height:200px;object-fit:cover;border-radius:var(--r-md);border:2px solid var(--vl);margin-bottom:1rem}
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--vl);border-radius:10px}
-
-/* ── REEL VIEW BUTTON ── */
-.view-toggle-btn{background:var(--white);border:2px solid var(--vl);border-radius:40px;padding:6px 16px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
-.view-toggle-btn:hover{border-color:var(--pink);color:var(--pink)}
-.view-toggle-btn.film-active{background:var(--violet);color:#fff;border-color:var(--violet);box-shadow:0 4px 16px rgba(109,40,217,.3)}
-
-/* ── REEL MODAL ── */
-.reel-overlay{position:fixed;inset:0;background:#000;z-index:2000;display:flex;flex-direction:column;animation:fadeIn .2s ease}
-.reel-overlay.hidden{display:none!important}
-.reel-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;position:absolute;top:0;left:0;right:0;z-index:10;background:linear-gradient(to bottom,rgba(0,0,0,.8),transparent)}
-.reel-counter{font-family:'Satisfy',cursive;font-size:18px;color:#fff;opacity:.9}
-.reel-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .15s}
-.reel-close:hover{background:rgba(255,255,255,.3)}
-.reel-stage{flex:1;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.reel-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s ease,transform .4s ease;transform:translateX(60px);pointer-events:none}
-.reel-slide.active{opacity:1;transform:translateX(0);pointer-events:auto}
-.reel-slide.exit-left{opacity:0;transform:translateX(-60px)}
-.reel-slide.exit-right{opacity:0;transform:translateX(60px)}
-.reel-media{max-width:100%;max-height:calc(100vh - 220px);object-fit:contain;border-radius:4px}
-.reel-media-video{max-width:100%;max-height:calc(100vh - 220px);border-radius:4px;background:#000}
-.reel-nophoto{font-size:80px;opacity:.4}
-.reel-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.6) 70%,transparent 100%);padding:60px 24px 20px;z-index:10}
-.reel-title{font-family:'Satisfy',cursive;font-size:24px;color:#fff;margin-bottom:6px}
-.reel-date{font-size:13px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:8px}
-.reel-note{font-size:14px;font-weight:500;color:rgba(255,255,255,.8);line-height:1.6;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.reel-tags{display:flex;gap:6px;flex-wrap:wrap}
-.reel-tag{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(109,40,217,.5);color:#e0c6ff;border:1px solid rgba(109,40,217,.6)}
-.reel-controls{display:flex;align-items:center;justify-content:center;gap:16px;padding:14px 20px;background:#000;position:absolute;bottom:0;left:0;right:0;z-index:11}
-.reel-btn{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);color:#fff;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
-.reel-btn:hover{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.5)}
-.reel-btn:disabled{opacity:.3;cursor:not-allowed}
-.reel-play-btn{width:56px;height:56px;font-size:22px;background:var(--violet);border-color:var(--violet)}
-.reel-play-btn:hover{background:#5B21B6;border-color:#5B21B6}
-.reel-progress{flex:1;max-width:260px;height:4px;background:rgba(255,255,255,.2);border-radius:4px;overflow:hidden;cursor:pointer}
-.reel-progress-fill{height:100%;background:var(--violet);border-radius:4px;transition:width .3s linear}
-.reel-fav-btn{position:absolute;top:60px;right:20px;background:rgba(0,0,0,.4);border:2px solid rgba(255,255,255,.3);color:#fff;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;z-index:12;transition:all .15s}
-.reel-fav-btn.on{color:var(--pink);border-color:var(--pink)}
-.reel-open-btn{position:absolute;top:60px;right:66px;background:rgba(0,0,0,.4);border:2px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;z-index:12;transition:all .15s}
-.reel-open-btn:hover{background:rgba(255,255,255,.2)}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 </style>
 </head>
 <body>
@@ -317,7 +278,7 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
     <div style="background:var(--vp);border:2px solid var(--vl);border-radius:var(--r-md);padding:1rem;margin-bottom:1rem;text-align:center">
       <div style="font-family:'Satisfy',cursive;font-size:28px;color:var(--violet);letter-spacing:4px" id="settings-code"></div>
       <div style="font-size:12px;font-weight:700;color:var(--muted);margin-top:4px">share this code to invite people</div>
-      <button class="btn-secondary" style="margin-top:8px;height:34px;font-size:13px" onclick="copyCode(this)">copy code</button>
+      <button class="btn-secondary" style="margin-top:8px;height:34px;font-size:13px" onclick="copyCode()">copy code</button>
     </div>
     <div id="settings-members" style="margin-bottom:1rem"></div>
     <div class="field"><label>rename space</label><input class="cute-input" id="edit-name" style="width:100%"/></div>
@@ -379,7 +340,6 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
     </div>
   </div>
 
-  <!-- ALL VIEW -->
   <div id="view-all">
     <div class="stats-row" id="stats-row"></div>
     <div class="search-row">
@@ -388,36 +348,12 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
       <select class="cute-select" id="sort" onchange="renderAll()">
         <option value="newest">newest</option><option value="oldest">oldest</option>
       </select>
-      <button class="view-toggle-btn" id="film-toggle-btn" onclick="toggleFilmView()">🎞️ film</button>
     </div>
     <div class="tag-row" id="tag-filters"></div>
-    <div id="memory-grid" class="masonry"></div>
+    <div class="masonry" id="memory-grid"></div>
   </div>
-
-  <!-- REEL OVERLAY -->
-  <div class="reel-overlay hidden" id="reel-overlay">
-    <div class="reel-topbar">
-      <div class="reel-counter" id="reel-counter">1 / 1</div>
-      <button class="reel-close" onclick="closeReel()">✕</button>
-    </div>
-    <button class="reel-open-btn" onclick="openDetailFromReel()" title="open detail">⤢</button>
-    <button class="reel-fav-btn" id="reel-fav-btn" onclick="toggleFavReel()">♡</button>
-    <div class="reel-stage" id="reel-stage" onclick="reelStageClick(event)"></div>
-    <div class="reel-info" id="reel-info"></div>
-    <div class="reel-controls">
-      <button class="reel-btn" id="reel-prev" onclick="reelGo(-1)">←</button>
-      <button class="reel-btn reel-play-btn" id="reel-play" onclick="toggleReelPlay()">▶</button>
-      <div class="reel-progress" onclick="reelSeek(event)" id="reel-progress-wrap">
-        <div class="reel-progress-fill" id="reel-progress-fill" style="width:0%"></div>
-      </div>
-      <button class="reel-btn" id="reel-next" onclick="reelGo(1)">→</button>
-    </div>
-  </div>
-
   <div id="view-timeline" class="hidden"><div id="timeline-content"></div></div>
   <div id="view-albums" class="hidden"><div class="albums-grid" id="albums-content"></div></div>
-
-  <!-- UPLOAD VIEW -->
   <div id="view-upload" class="hidden">
     <div class="info-banner">📡 memories appear <strong>live</strong> for everyone in this space instantly ✦</div>
     <p class="section-heading">pin a new memory ✦</p>
@@ -446,11 +382,11 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 </div>
 
 <!-- MEMORY DETAIL MODAL -->
-<div class="modal-overlay hidden" id="modal-detail" onclick="if(event.target===this){this.classList.add('hidden');document.body.style.overflow=''}">
+<div class="modal-overlay hidden" id="modal-detail" onclick="if(event.target===this)this.classList.add('hidden')">
   <div class="modal">
     <div class="modal-header">
       <div class="modal-title" id="det-title"></div>
-      <button class="btn-close" onclick="document.getElementById('modal-detail').classList.add('hidden');document.body.style.overflow=''">✕</button>
+      <button class="btn-close" onclick="document.getElementById('modal-detail').classList.add('hidden')">✕</button>
     </div>
     <div id="det-media"></div>
     <div class="det-meta">
@@ -476,7 +412,6 @@ let sb,currentUser,currentUsername,currentSpace;
 let memories=[],globalTags=[],activeTagFilters=new Set();
 let currentDetailId=null,pendingFiles=[],editNewFile=null,currentTab='all';
 let rtChannel=null,authMode='login';
-let filmViewActive=false;
 const today=new Date().toISOString().split('T')[0];
 const EMOJIS=['🌸','🌊','🌅','☕','🎂','🌴','❄️','🪴','🚗','✨','🎵','🌙','🌈','🍜','🏔️','🎨','🌻','🍵','🦋','🎪'];
 
@@ -600,11 +535,11 @@ async function enterSpace(sp){
   document.getElementById('app-space-title').innerHTML=`${sp.emoji||'✨'} ${esc(sp.name)}`;
   document.getElementById('app-space-code').innerHTML=`code: <strong>${sp.code}</strong> — share to invite ♡`;
   document.getElementById('inp-date').value=today;
-  memories=[];globalTags=[];filmViewActive=false;
+  memories=[];globalTags=[];
   await loadMemories();subscribeRealtime();switchTab('all');
 }
 async function loadMemories(){
-  const {data}=await sb.from('memories').select('*').eq('space_id',currentSpace.id).order('date',{ascending:false,nullsFirst:false});
+  const {data}=await sb.from('memories').select('*').eq('space_id',currentSpace.id).order('date',{ascending:false});
   memories=data||[];updateLiveLabel();
 }
 async function updateLiveLabel(){
@@ -631,7 +566,7 @@ async function openSettings(){
   document.getElementById('settings-members').innerHTML=`<div style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px">members</div>`+(data||[]).map(m=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--vl)"><div style="width:26px;height:26px;border-radius:50%;background:var(--pp);border:2px solid var(--pl);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--pink)">${m.username[0].toUpperCase()}</div><span style="font-size:13px;font-weight:700;color:var(--text)">${esc(m.username)}</span>${m.username===currentUsername?'<span style="font-size:10px;font-weight:700;color:var(--muted);margin-left:auto">you</span>':''}</div>`).join('');
   show('modal-settings');
 }
-function copyCode(btn){navigator.clipboard.writeText(currentSpace.code).catch(()=>{});btn.textContent='copied!';setTimeout(()=>btn.textContent='copy code',2000)}
+function copyCode(){navigator.clipboard.writeText(currentSpace.code).catch(()=>{});const btn=event.target;btn.textContent='copied!';setTimeout(()=>btn.textContent='copy code',2000)}
 async function updateSpace(){
   const name=document.getElementById('edit-name').value.trim();
   if(!name){setErr('settings-err','name cannot be empty!');return}
@@ -672,87 +607,6 @@ function getFiltered(){
   return list;
 }
 
-// ── FILM STRIP VIEW ──
-function toggleFilmView(){
-  filmViewActive=!filmViewActive;
-  const btn=document.getElementById('film-toggle-btn');
-  const grid=document.getElementById('memory-grid');
-  const film=document.getElementById('film-strip-container');
-  if(filmViewActive){
-    btn.classList.add('film-active');
-    btn.textContent='🔲 grid';
-    grid.classList.add('hidden');
-    film.classList.remove('hidden');
-    renderFilmStrip();
-  }else{
-    btn.classList.remove('film-active');
-    btn.textContent='🎞️ film';
-    grid.classList.remove('hidden');
-    film.classList.add('hidden');
-    const list=getFiltered();
-    if(!list.length){grid.innerHTML='<div class="no-results"><span style="font-size:42px;display:block;margin-bottom:10px">🌸</span><p>no memories found~</p></div>';}
-    else grid.innerHTML=list.map(cardHTML).join('');
-  }
-}
-
-function buildSprocketRow(){
-  let holes='';
-  for(let i=0;i<28;i++)holes+=`<div class="film-sprocket"></div>`;
-  return`<div class="film-sprocket-row">${holes}</div>`;
-}
-
-function filmFrameHTML(m,idx){
-  let media='';
-  if(m.data_url){
-    if(isVideo(m.data_url)){
-      media=`<div class="film-video-ph"><span>▶️</span><small>video</small></div>`;
-    }else{
-      media=`<img class="film-img" src="${esc(m.data_url)}" alt="${esc(m.title)}" loading="lazy">`;
-    }
-  }else{
-    media=`<div class="film-ph">📷</div>`;
-  }
-  const tags=(m.tags||[]).slice(0,3).map(t=>`<span class="film-caption-tag">${esc(t)}</span>`).join('');
-  const favIcon=m.fav?'<span class="film-fav">♥</span>':'';
-  return`
-    <div class="film-frame" onclick="openDetail('${m.id}')">
-      <div class="film-number">✦ ${String(idx+1).padStart(3,'0')} ✦</div>
-      <div class="film-frame-inner">
-        ${media}
-        <div class="film-caption">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:4px">
-            <div class="film-caption-title">${esc(m.title||'untitled')}</div>
-            ${favIcon}
-          </div>
-          <div class="film-caption-date">📅 ${formatDate(m.date)||'no date'}</div>
-          ${m.note?`<div class="film-caption-note">${esc(m.note)}</div>`:''}
-          ${tags?`<div class="film-caption-tags">${tags}</div>`:''}
-        </div>
-      </div>
-    </div>`;
-}
-
-function renderFilmStrip(){
-  const list=getFiltered();
-  const container=document.getElementById('film-strip-container');
-  if(!list.length){
-    container.innerHTML=`<div class="film-outer"><div class="film-empty"><p>no memories found~ ✦</p></div></div>`;
-    return;
-  }
-  const frames=list.map((m,i)=>filmFrameHTML(m,i)).join('');
-  container.innerHTML=`
-    <div class="film-outer">
-      ${buildSprocketRow()}
-      <div class="film-scroll-area" id="film-scroll">
-        ${frames}
-      </div>
-      ${buildSprocketRow()}
-    </div>
-    <div style="text-align:center;margin-top:10px;font-size:12px;font-weight:700;color:var(--muted)">
-      scroll to browse · click a frame to open ✦
-    </div>`;
-}
-
 // ── CARD HTML ──
 function mediaThumb(m){
   if(!m.data_url)return`<div class="mcard-ph">📷</div>`;
@@ -764,15 +618,7 @@ function cardHTML(m){
   return`<div class="mcard-wrap"><div class="mcard" onclick="openDetail('${m.id}')">${mediaThumb(m)}<div class="mcard-body"><div class="mcard-title">${esc(m.title||'untitled')}</div><div class="mcard-meta">${formatDate(m.date)}${m.album?' · '+esc(m.album):''}${m.username?' · '+esc(m.username):''}</div>${tags?`<div class="mcard-tags">${tags}</div>`:''}</div></div><button class="fav-btn${m.fav?' on':''}" onclick="event.stopPropagation();toggleFav('${m.id}')">${m.fav?'♥':'♡'}</button></div>`;
 }
 
-function renderAll(){
-  renderTagFilters();refreshAlbumSelect();renderStats();
-  const list=getFiltered();
-  if(filmViewActive){renderFilmStrip();return;}
-  const g=document.getElementById('memory-grid');
-  if(!list.length){g.innerHTML='<div class="no-results"><span style="font-size:42px;display:block;margin-bottom:10px">🌸</span><p>no memories found~</p></div>';return}
-  g.innerHTML=list.map(cardHTML).join('');
-}
-
+function renderAll(){renderTagFilters();refreshAlbumSelect();renderStats();const list=getFiltered(),g=document.getElementById('memory-grid');if(!list.length){g.innerHTML='<div class="no-results"><span style="font-size:42px;display:block;margin-bottom:10px">🌸</span><p>no memories found~</p></div>';return}g.innerHTML=list.map(cardHTML).join('')}
 function renderStats(){const f=memories.filter(m=>m.fav).length,a=[...new Set(memories.map(m=>m.album).filter(Boolean))].length;document.getElementById('stats-row').innerHTML=`<div class="stat-pill"><strong>${memories.length}</strong> memories</div><div class="stat-pill"><strong>${a}</strong> albums</div><div class="stat-pill"><strong>${f}</strong> favourites ♡</div>`}
 function syncGlobalTags(){const f=[...new Set(memories.flatMap(m=>m.tags||[]))];globalTags=[...new Set([...globalTags,...f])]}
 function renderTagFilters(){
@@ -790,14 +636,16 @@ function refreshAlbumSelect(){const sel=document.getElementById('filter-album'),
 function refreshAlbumDl(){const dl=document.getElementById('album-dl'),albums=[...new Set(memories.map(m=>m.album).filter(Boolean))];dl.innerHTML=albums.map(a=>`<option value="${esc(a)}">`).join('')}
 async function toggleFav(id){const m=memories.find(x=>x.id===id);if(!m)return;m.fav=!m.fav;await sb.from('memories').update({fav:m.fav}).eq('id',id);renderAll()}
 
-// ── TIMELINE (oldest first = chronological) ──
+// ── TIMELINE — strictly chronological ──
 function renderTimeline(){
   if(!memories.length){document.getElementById('timeline-content').innerHTML='<div class="empty-state"><span class="ei">🕰️</span><p>your story starts here ✦</p></div>';return}
+  // sort newest first using date, fallback to created_at
   const sorted=[...memories].sort((a,b)=>{
     const da=new Date(a.date?a.date+'T12:00:00':a.created_at);
     const db=new Date(b.date?b.date+'T12:00:00':b.created_at);
-    return da-db;
+    return db-da;
   });
+  // group by year-month key so ordering is correct
   const groups={};
   const groupOrder=[];
   sorted.forEach(m=>{
@@ -807,6 +655,7 @@ function renderTimeline(){
     if(!groups[sortKey]){groups[sortKey]={label,items:[]};groupOrder.push(sortKey)}
     groups[sortKey].items.push(m);
   });
+  // groupOrder is already newest-first because sorted array is newest-first
   document.getElementById('timeline-content').innerHTML=groupOrder.map(key=>`<div class="timeline-group"><div class="timeline-month"><span class="dot"></span>${groups[key].label}</div><div class="masonry">${groups[key].items.map(cardHTML).join('')}</div></div>`).join('');
 }
 
@@ -819,12 +668,13 @@ function renderAlbums(){
 }
 function filterAlbum(name){switchTab('all');setTimeout(()=>{document.getElementById('filter-album').value=name==='uncategorized'?'':name;renderAll()},50)}
 
-// ── FILE UPLOAD ──
+// ── FILE UPLOAD with auto-date ──
 function handleDrop(e){e.preventDefault();handleFiles(e.dataTransfer.files)}
 function handleFiles(files){
   pendingFiles=[];const prev=document.getElementById('file-previews');prev.innerHTML='';
   let latestDate=null;
   Array.from(files).forEach(file=>{
+    // try to get date from file lastModified
     const fileDate=new Date(file.lastModified);
     if(!latestDate||fileDate>latestDate)latestDate=fileDate;
     const r=new FileReader();
@@ -837,7 +687,11 @@ function handleFiles(files){
   });
   if(files.length){
     if(!document.getElementById('inp-title').value)document.getElementById('inp-title').value=files[0].name.replace(/\.[^.]+$/,'');
-    if(latestDate){const d=latestDate.toISOString().split('T')[0];document.getElementById('inp-date').value=d;}
+    // auto-set date from file
+    if(latestDate){
+      const d=latestDate.toISOString().split('T')[0];
+      document.getElementById('inp-date').value=d;
+    }
   }
 }
 
@@ -897,6 +751,7 @@ function downloadMemory(){
 function openEdit(){
   const m=memories.find(x=>x.id===currentDetailId);if(!m)return;
   editNewFile=null;
+  // show current media preview
   let prevHtml='';
   if(m.data_url){
     if(isVideo(m.data_url))prevHtml=`<video class="edit-media-preview" src="${esc(m.data_url)}" controls muted></video>`;
@@ -910,7 +765,7 @@ function openEdit(){
   document.getElementById('edit-note').value=m.note||'';
   document.getElementById('edit-file-input').value='';
   setErr('edit-err','');
-  hide('modal-detail');document.body.style.overflow='';show('modal-edit');
+  hide('modal-detail');show('modal-edit');
 }
 
 function handleEditFile(files){
@@ -919,9 +774,11 @@ function handleEditFile(files){
   const r=new FileReader();
   r.onload=e=>{
     editNewFile={dataUrl:e.target.result,type:file.type};
+    // update preview
     const wrap=document.getElementById('edit-media-preview-wrap');
     if(file.type.startsWith('video'))wrap.innerHTML=`<video class="edit-media-preview" src="${e.target.result}" controls muted></video>`;
     else wrap.innerHTML=`<img class="edit-media-preview" src="${e.target.result}" alt="new">`;
+    // auto date
     const d=new Date(file.lastModified).toISOString().split('T')[0];
     document.getElementById('edit-date').value=d;
   };
