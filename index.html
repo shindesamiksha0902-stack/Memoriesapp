@@ -1,4 +1,4 @@
-=<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -204,40 +204,45 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--vl);border-radius:10px}
 
-/* ── FILM STRIP VIEW ── */
+/* ── REEL VIEW BUTTON ── */
 .view-toggle-btn{background:var(--white);border:2px solid var(--vl);border-radius:40px;padding:6px 16px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
 .view-toggle-btn:hover{border-color:var(--pink);color:var(--pink)}
-.view-toggle-btn.film-active{background:linear-gradient(135deg,#1a0a2e,#2d1459);color:#f0c6ff;border-color:#6D28D9;box-shadow:0 4px 16px rgba(109,40,217,.3)}
+.view-toggle-btn.film-active{background:var(--violet);color:#fff;border-color:var(--violet);box-shadow:0 4px 16px rgba(109,40,217,.3)}
 
-.film-outer{width:100%;background:#0f0520;border-radius:var(--r-lg);overflow:hidden;padding:20px 0;position:relative;box-shadow:0 8px 40px rgba(0,0,0,.4)}
-.film-sprocket-row{display:flex;align-items:center;padding:0 10px;gap:14px;height:28px;background:#0a0315}
-.film-sprocket{width:20px;height:14px;border-radius:3px;background:#0f0520;border:2px solid #2d1459;flex-shrink:0}
-.film-scroll-area{overflow-x:auto;padding:14px 24px;display:flex;gap:20px;align-items:flex-start;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
-.film-scroll-area::-webkit-scrollbar{height:5px}
-.film-scroll-area::-webkit-scrollbar-track{background:#1a0a2e}
-.film-scroll-area::-webkit-scrollbar-thumb{background:#6D28D9;border-radius:10px}
-
-.film-frame{flex-shrink:0;width:220px;scroll-snap-align:start;cursor:pointer;transition:transform .2s}
-.film-frame:hover{transform:translateY(-4px) scale(1.02)}
-.film-frame-inner{border:3px solid #3d2060;border-radius:6px;overflow:hidden;background:#1a0a2e;box-shadow:0 4px 20px rgba(0,0,0,.5)}
-.film-img{width:100%;height:160px;object-fit:cover;display:block}
-.film-video-ph{width:100%;height:160px;background:linear-gradient(135deg,#2d1459,#1a3a2e);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
-.film-video-ph span{font-size:32px}
-.film-video-ph small{color:#a78bfa;font-size:11px;font-weight:700;font-family:'Outfit',sans-serif}
-.film-ph{width:100%;height:160px;background:linear-gradient(135deg,#2d1459,#3d1060);display:flex;align-items:center;justify-content:center;font-size:40px}
-.film-caption{padding:10px 10px 12px;background:#12062a}
-.film-caption-title{font-family:'Satisfy',cursive;font-size:15px;color:#e0c6ff;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.film-caption-date{font-size:11px;font-weight:700;color:#7c5cbf;margin-bottom:6px;display:flex;align-items:center;gap:4px}
-.film-caption-note{font-size:11px;font-weight:600;color:#9f7aea;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.film-caption-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
-.film-caption-tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;background:#2d1459;color:#c4b5fd;border:1px solid #4c3080}
-.film-fav{display:inline-block;font-size:12px;margin-left:auto}
-.film-number{font-size:9px;font-weight:800;color:#4c3080;letter-spacing:1px;text-align:center;padding:4px 0;background:#0a0315;font-family:'Outfit',sans-serif}
-
-.film-empty{text-align:center;padding:3rem 1rem;color:#7c5cbf}
-.film-empty p{font-family:'Satisfy',cursive;font-size:20px;color:#c4b5fd}
-
-@keyframes filmShimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+/* ── REEL MODAL ── */
+.reel-overlay{position:fixed;inset:0;background:#000;z-index:2000;display:flex;flex-direction:column;animation:fadeIn .2s ease}
+.reel-overlay.hidden{display:none!important}
+.reel-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;position:absolute;top:0;left:0;right:0;z-index:10;background:linear-gradient(to bottom,rgba(0,0,0,.8),transparent)}
+.reel-counter{font-family:'Satisfy',cursive;font-size:18px;color:#fff;opacity:.9}
+.reel-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.reel-close:hover{background:rgba(255,255,255,.3)}
+.reel-stage{flex:1;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.reel-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s ease,transform .4s ease;transform:translateX(60px);pointer-events:none}
+.reel-slide.active{opacity:1;transform:translateX(0);pointer-events:auto}
+.reel-slide.exit-left{opacity:0;transform:translateX(-60px)}
+.reel-slide.exit-right{opacity:0;transform:translateX(60px)}
+.reel-media{max-width:100%;max-height:calc(100vh - 220px);object-fit:contain;border-radius:4px}
+.reel-media-video{max-width:100%;max-height:calc(100vh - 220px);border-radius:4px;background:#000}
+.reel-nophoto{font-size:80px;opacity:.4}
+.reel-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.6) 70%,transparent 100%);padding:60px 24px 20px;z-index:10}
+.reel-title{font-family:'Satisfy',cursive;font-size:24px;color:#fff;margin-bottom:6px}
+.reel-date{font-size:13px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:8px}
+.reel-note{font-size:14px;font-weight:500;color:rgba(255,255,255,.8);line-height:1.6;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.reel-tags{display:flex;gap:6px;flex-wrap:wrap}
+.reel-tag{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(109,40,217,.5);color:#e0c6ff;border:1px solid rgba(109,40,217,.6)}
+.reel-controls{display:flex;align-items:center;justify-content:center;gap:16px;padding:14px 20px;background:#000;position:absolute;bottom:0;left:0;right:0;z-index:11}
+.reel-btn{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);color:#fff;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.reel-btn:hover{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.5)}
+.reel-btn:disabled{opacity:.3;cursor:not-allowed}
+.reel-play-btn{width:56px;height:56px;font-size:22px;background:var(--violet);border-color:var(--violet)}
+.reel-play-btn:hover{background:#5B21B6;border-color:#5B21B6}
+.reel-progress{flex:1;max-width:260px;height:4px;background:rgba(255,255,255,.2);border-radius:4px;overflow:hidden;cursor:pointer}
+.reel-progress-fill{height:100%;background:var(--violet);border-radius:4px;transition:width .3s linear}
+.reel-fav-btn{position:absolute;top:60px;right:20px;background:rgba(0,0,0,.4);border:2px solid rgba(255,255,255,.3);color:#fff;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;z-index:12;transition:all .15s}
+.reel-fav-btn.on{color:var(--pink);border-color:var(--pink)}
+.reel-open-btn{position:absolute;top:60px;right:66px;background:rgba(0,0,0,.4);border:2px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;z-index:12;transition:all .15s}
+.reel-open-btn:hover{background:rgba(255,255,255,.2)}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 </style>
 </head>
 <body>
@@ -387,7 +392,26 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
     </div>
     <div class="tag-row" id="tag-filters"></div>
     <div id="memory-grid" class="masonry"></div>
-    <div id="film-strip-container" class="hidden"></div>
+  </div>
+
+  <!-- REEL OVERLAY -->
+  <div class="reel-overlay hidden" id="reel-overlay">
+    <div class="reel-topbar">
+      <div class="reel-counter" id="reel-counter">1 / 1</div>
+      <button class="reel-close" onclick="closeReel()">✕</button>
+    </div>
+    <button class="reel-open-btn" onclick="openDetailFromReel()" title="open detail">⤢</button>
+    <button class="reel-fav-btn" id="reel-fav-btn" onclick="toggleFavReel()">♡</button>
+    <div class="reel-stage" id="reel-stage" onclick="reelStageClick(event)"></div>
+    <div class="reel-info" id="reel-info"></div>
+    <div class="reel-controls">
+      <button class="reel-btn" id="reel-prev" onclick="reelGo(-1)">←</button>
+      <button class="reel-btn reel-play-btn" id="reel-play" onclick="toggleReelPlay()">▶</button>
+      <div class="reel-progress" onclick="reelSeek(event)" id="reel-progress-wrap">
+        <div class="reel-progress-fill" id="reel-progress-fill" style="width:0%"></div>
+      </div>
+      <button class="reel-btn" id="reel-next" onclick="reelGo(1)">→</button>
+    </div>
   </div>
 
   <div id="view-timeline" class="hidden"><div id="timeline-content"></div></div>
