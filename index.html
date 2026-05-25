@@ -83,8 +83,12 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 .emoji-opt.active,.emoji-opt:hover{border-color:var(--violet);background:var(--vp)}
 /* APP */
 .app{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1.5rem 1.25rem 4rem}
-.topbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:1.75rem}
-.topbar-left{display:flex;align-items:center;gap:12px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:.75rem;background:var(--white);border:1.5px solid var(--vl);border-radius:var(--r-lg);padding:10px 16px}
+.topbar-center{flex:1;text-align:center;min-width:0}
+.topbar-center .logo{font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar-center .space-badge{font-size:11px;margin-top:2px}
+.topbar-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.tabs-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:1.5rem;flex-wrap:wrap}
 .back-btn{background:var(--white);border:2px solid var(--vl);border-radius:40px;padding:6px 14px;font-size:14px;font-weight:700;color:var(--muted);cursor:pointer;font-family:'Outfit',sans-serif;transition:all .15s}
 .back-btn:hover{border-color:var(--violet);color:var(--violet)}
 .logo{font-family:'Playfair Display',serif;font-size:22px;color:var(--violet)}
@@ -323,26 +327,24 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 <!-- APP -->
 <div class="app hidden" id="app-view">
   <div class="topbar">
-    <div class="topbar-left">
-      <button class="back-btn" onclick="goToLobby()">← spaces</button>
-      <div class="space-info">
-        <div style="display:flex;align-items:center;gap:8px">
-          <div class="logo" id="app-space-title"></div>
-          <button class="settings-btn" onclick="openSettings()" title="Space Settings">⚙️</button>
-        </div>
-        <div class="space-badge" id="app-space-code"></div>
-      </div>
+    <button class="back-btn" onclick="goToLobby()">← spaces</button>
+    <div class="topbar-center">
+      <div class="logo" id="app-space-title"></div>
+      <div class="space-badge" id="app-space-code"></div>
     </div>
     <div class="topbar-right">
       <div class="live-tag"><span class="live-dot"></span><span id="live-label">live</span></div>
-      <button class="slideshow-btn" onclick="openSlideshow()" title="Slideshow">▶ slideshow</button>
-      <div class="tabs">
-        <button class="tab active" onclick="switchTab('all')">all</button>
-        <button class="tab" onclick="switchTab('timeline')">timeline</button>
-        <button class="tab" onclick="switchTab('albums')">albums</button>
-        <button class="tab" onclick="switchTab('upload')">+ add</button>
-      </div>
+      <button class="settings-btn" onclick="openSettings()" title="Settings">⚙️</button>
     </div>
+  </div>
+  <div class="tabs-bar">
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('all')">all</button>
+      <button class="tab" onclick="switchTab('timeline')">timeline</button>
+      <button class="tab" onclick="switchTab('albums')">albums</button>
+      <button class="tab" onclick="switchTab('upload')">+ add</button>
+    </div>
+    <button class="slideshow-btn" onclick="openSlideshow()">▶ slideshow</button>
   </div>
 
   <div id="view-all">
