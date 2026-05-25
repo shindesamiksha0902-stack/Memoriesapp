@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>memories ♡</title>
+<title>Memories ♡</title>
 <link rel="manifest" href="/manifest.json"/>
 <meta name="theme-color" content="#6D28D9"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
-<meta name="apple-mobile-web-app-title" content="memories"/>
+<meta name="apple-mobile-web-app-title" content="Memories"/>
 <link rel="apple-touch-icon" href="/public/icons/icon-192.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -203,11 +203,8 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 .section-heading{font-family:'Playfair Display',serif;font-size:22px;color:var(--violet);margin-bottom:1.25rem}
 .settings-btn{background:var(--vp);border:2px solid var(--vl);border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .settings-btn:hover{border-color:var(--violet)}
-.space-info{display:flex;flex-direction:column;gap:2px}
-.topbar-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .slideshow-btn{background:var(--violet);border:none;color:#fff;padding:7px 14px;border-radius:40px;cursor:pointer;font-size:12px;font-weight:700;font-family:'Outfit',sans-serif;transition:all .15s;white-space:nowrap}
 .slideshow-btn:hover{background:#5B21B6}
-/* EDIT MODAL extra previews */
 .edit-media-preview{width:100%;max-height:200px;object-fit:cover;border-radius:var(--r-md);border:2px solid var(--vl);margin-bottom:1rem}
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:var(--bg)}
@@ -217,23 +214,23 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 <body>
 
 <div class="loading-screen" id="loading">
-  <div class="loading-logo">mem<span class="pk">ories</span> <span class="gd">♡</span></div>
+  <div class="loading-logo">Mem<span class="pk">ories</span> <span class="gd">♡</span></div>
   <div class="spinner"></div>
 </div>
 
 <!-- AUTH -->
 <div class="auth-wrap hidden" id="auth-view">
   <div class="auth-card">
-    <div class="auth-logo">mem<span class="pk">ories</span> <span class="gd">♡</span></div>
-    <div class="auth-sub">your shared memory vault</div>
+    <div class="auth-logo">Mem<span class="pk">ories</span> <span class="gd">♡</span></div>
+    <div class="auth-sub">Your Shared Memory Vault</div>
     <div class="auth-tabs">
-      <button class="auth-tab active" onclick="toggleAuthTab('login')">sign in</button>
-      <button class="auth-tab" onclick="toggleAuthTab('signup')">sign up</button>
+      <button class="auth-tab active" onclick="toggleAuthTab('login')">Sign In</button>
+      <button class="auth-tab" onclick="toggleAuthTab('signup')">Sign Up</button>
     </div>
-    <div class="field"><label>email</label><input class="cute-input" id="inp-email" type="email" placeholder="your@email.com"/></div>
-    <div class="field"><label>password</label><input class="cute-input" id="inp-pass" type="password" placeholder="password" onkeydown="if(event.key==='Enter')handleAuth()"/></div>
-    <div class="field hidden" id="field-name"><label>display name</label><input class="cute-input" id="inp-name" type="text" placeholder="what should we call you?"/></div>
-    <button class="btn-primary" id="btn-auth" onclick="handleAuth()">sign in ♡</button>
+    <div class="field"><label>Email</label><input class="cute-input" id="inp-email" type="email" placeholder="your@email.com"/></div>
+    <div class="field"><label>Password</label><input class="cute-input" id="inp-pass" type="password" placeholder="Password" onkeydown="if(event.key==='Enter')handleAuth()"/></div>
+    <div class="field hidden" id="field-name"><label>Display Name</label><input class="cute-input" id="inp-name" type="text" placeholder="What should we call you?"/></div>
+    <button class="btn-primary" id="btn-auth" onclick="handleAuth()">Sign In ♡</button>
     <div class="auth-err" id="auth-err"></div>
   </div>
 </div>
@@ -241,22 +238,22 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 <!-- LOBBY -->
 <div class="lobby-wrap hidden" id="lobby-view">
   <div class="lobby-top">
-    <div class="lobby-logo">mem<span class="pk">ories</span> <span class="gd">♡</span></div>
+    <div class="lobby-logo">Mem<span class="pk">ories</span> <span class="gd">♡</span></div>
     <div class="user-pill">
       <span>👤 <strong id="lobby-uname"></strong></span>
-      <button class="btn-logout" onclick="handleLogout()">sign out</button>
+      <button class="btn-logout" onclick="handleLogout()">Sign Out</button>
     </div>
   </div>
   <div class="lobby-section">
-    <h2>your spaces</h2>
+    <h2>Your Spaces</h2>
     <div class="lobby-grid" id="spaces-grid"></div>
   </div>
   <div class="lobby-section">
-    <h2>join a space</h2>
-    <p style="font-size:14px;font-weight:600;color:var(--muted);margin-bottom:12px">got a code from a friend? enter it below ✦</p>
+    <h2>Join A Space</h2>
+    <p style="font-size:14px;font-weight:600;color:var(--muted);margin-bottom:12px">Got a code from a friend? Enter it below ✦</p>
     <div class="join-row">
-      <input class="cute-input" id="inp-join" type="text" placeholder="enter space code" maxlength="8" style="text-transform:uppercase" onkeydown="if(event.key==='Enter')joinSpace()"/>
-      <button class="btn-secondary" onclick="joinSpace()">join ♡</button>
+      <input class="cute-input" id="inp-join" type="text" placeholder="Enter Space Code" maxlength="8" style="text-transform:uppercase" onkeydown="if(event.key==='Enter')joinSpace()"/>
+      <button class="btn-secondary" onclick="joinSpace()">Join ♡</button>
     </div>
     <div class="auth-err" id="join-err"></div>
   </div>
@@ -266,12 +263,12 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 <div class="modal-overlay hidden" id="modal-create" onclick="if(event.target===this)this.classList.add('hidden')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-title">new space ✦</div>
+      <div class="modal-title">New Space ✦</div>
       <button class="btn-close" onclick="document.getElementById('modal-create').classList.add('hidden')">✕</button>
     </div>
-    <div class="field"><label>space name</label><input class="cute-input" id="cs-name" placeholder="e.g. goa trip 2025" style="width:100%" onkeydown="if(event.key==='Enter')createSpace()"/></div>
-    <div class="field"><label>pick an emoji</label><div class="emoji-grid" id="emoji-grid"></div></div>
-    <button class="btn-primary" id="btn-cs" onclick="createSpace()">create space ♡</button>
+    <div class="field"><label>Space Name</label><input class="cute-input" id="cs-name" placeholder="e.g. Goa Trip 2025" style="width:100%" onkeydown="if(event.key==='Enter')createSpace()"/></div>
+    <div class="field"><label>Pick An Emoji</label><div class="emoji-grid" id="emoji-grid"></div></div>
+    <button class="btn-primary" id="btn-cs" onclick="createSpace()">Create Space ♡</button>
     <div class="auth-err" id="cs-err"></div>
   </div>
 </div>
@@ -280,19 +277,19 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 <div class="modal-overlay hidden" id="modal-settings" onclick="if(event.target===this)this.classList.add('hidden')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-title">space settings ⚙️</div>
+      <div class="modal-title">Space Settings ⚙️</div>
       <button class="btn-close" onclick="document.getElementById('modal-settings').classList.add('hidden')">✕</button>
     </div>
     <div style="background:var(--vp);border:2px solid var(--vl);border-radius:var(--r-md);padding:1rem;margin-bottom:1rem;text-align:center">
       <div style="font-family:'Playfair Display',serif;font-size:28px;color:var(--violet);letter-spacing:4px" id="settings-code"></div>
-      <div style="font-size:12px;font-weight:700;color:var(--muted);margin-top:4px">share this code to invite people</div>
-      <button class="btn-secondary" style="margin-top:8px;height:34px;font-size:13px" onclick="copyCode()">copy code</button>
+      <div style="font-size:12px;font-weight:700;color:var(--muted);margin-top:4px">Share This Code To Invite People</div>
+      <button class="btn-secondary" style="margin-top:8px;height:34px;font-size:13px" onclick="copyCode(this)">Copy Code</button>
     </div>
     <div id="settings-members" style="margin-bottom:1rem"></div>
-    <div class="field"><label>rename space</label><input class="cute-input" id="edit-name" style="width:100%"/></div>
-    <button class="btn-primary" id="btn-update" onclick="updateSpace()">save changes ♡</button>
+    <div class="field"><label>Rename Space</label><input class="cute-input" id="edit-name" style="width:100%"/></div>
+    <button class="btn-primary" id="btn-update" onclick="updateSpace()">Save Changes ♡</button>
     <div class="hidden" id="danger-zone" style="margin-top:16px;padding-top:16px;border-top:2px dashed var(--vl)">
-      <button class="btn-delete" style="width:100%;text-align:center" onclick="deleteSpace()">🗑 delete this space</button>
+      <button class="btn-delete" style="width:100%;text-align:center" onclick="deleteSpace()">🗑 Delete This Space</button>
     </div>
     <div class="auth-err" id="settings-err"></div>
   </div>
@@ -302,24 +299,24 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 <div class="modal-overlay hidden" id="modal-edit" onclick="if(event.target===this)this.classList.add('hidden')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-title">edit memory ✏️</div>
+      <div class="modal-title">Edit Memory ✏️</div>
       <button class="btn-close" onclick="document.getElementById('modal-edit').classList.add('hidden')">✕</button>
     </div>
     <div id="edit-media-preview-wrap"></div>
     <div style="margin-bottom:10px">
-      <label class="form-label">replace photo/video</label>
+      <label class="form-label">Replace Photo/Video</label>
       <input type="file" id="edit-file-input" accept="image/*,video/*" onchange="handleEditFile(this.files)" style="font-size:13px;font-weight:600;color:var(--muted);width:100%"/>
     </div>
     <div class="form-row">
-      <div class="form-col"><label class="form-label">title</label><input class="form-input" type="text" id="edit-title" placeholder="title"/></div>
-      <div class="form-col"><label class="form-label">date</label><input class="form-input" type="date" id="edit-date"/></div>
+      <div class="form-col"><label class="form-label">Title</label><input class="form-input" type="text" id="edit-title" placeholder="Title"/></div>
+      <div class="form-col"><label class="form-label">Date</label><input class="form-input" type="date" id="edit-date"/></div>
     </div>
     <div class="form-row">
-      <div class="form-col"><label class="form-label">album</label><input class="form-input" type="text" id="edit-album" placeholder="album name"/></div>
-      <div class="form-col"><label class="form-label">tags</label><input class="form-input" type="text" id="edit-tags" placeholder="tag1, tag2"/></div>
+      <div class="form-col"><label class="form-label">Album</label><input class="form-input" type="text" id="edit-album" placeholder="Album Name"/></div>
+      <div class="form-col"><label class="form-label">Tags</label><input class="form-input" type="text" id="edit-tags" placeholder="tag1, tag2"/></div>
     </div>
-    <div style="margin-bottom:14px"><label class="form-label">note</label><textarea class="form-textarea" id="edit-note" rows="2" placeholder="add a note..."></textarea></div>
-    <button class="btn-primary" id="btn-edit-save" onclick="saveEdit()">save changes ♡</button>
+    <div style="margin-bottom:14px"><label class="form-label">Note</label><textarea class="form-textarea" id="edit-note" rows="2" placeholder="Add a note..."></textarea></div>
+    <button class="btn-primary" id="btn-edit-save" onclick="saveEdit()">Save Changes ♡</button>
     <div class="auth-err" id="edit-err"></div>
   </div>
 </div>
@@ -327,33 +324,33 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
 <!-- APP -->
 <div class="app hidden" id="app-view">
   <div class="topbar">
-    <button class="back-btn" onclick="goToLobby()">← spaces</button>
+    <button class="back-btn" onclick="goToLobby()">← Spaces</button>
     <div class="topbar-center">
       <div class="logo" id="app-space-title"></div>
       <div class="space-badge" id="app-space-code"></div>
     </div>
     <div class="topbar-right">
-      <div class="live-tag"><span class="live-dot"></span><span id="live-label">live</span></div>
+      <div class="live-tag"><span class="live-dot"></span><span id="live-label">Live</span></div>
       <button class="settings-btn" onclick="openSettings()" title="Settings">⚙️</button>
     </div>
   </div>
   <div class="tabs-bar">
     <div class="tabs">
-      <button class="tab active" onclick="switchTab('all')">all</button>
-      <button class="tab" onclick="switchTab('timeline')">timeline</button>
-      <button class="tab" onclick="switchTab('albums')">albums</button>
-      <button class="tab" onclick="switchTab('upload')">+ add</button>
+      <button class="tab active" onclick="switchTab('all')">All</button>
+      <button class="tab" onclick="switchTab('timeline')">Timeline</button>
+      <button class="tab" onclick="switchTab('albums')">Albums</button>
+      <button class="tab" onclick="switchTab('upload')">+ Add</button>
     </div>
-    <button class="slideshow-btn" onclick="openSlideshow()">▶ slideshow</button>
+    <button class="slideshow-btn" onclick="openSlideshow()">▶ Slideshow</button>
   </div>
 
   <div id="view-all">
     <div class="stats-row" id="stats-row"></div>
     <div class="search-row">
-      <div class="search-wrap"><input type="text" id="search" placeholder="🔍 search memories..." oninput="renderAll()"/></div>
-      <select class="cute-select" id="filter-album" onchange="renderAll()"><option value="">all albums</option></select>
+      <div class="search-wrap"><input type="text" id="search" placeholder="🔍 Search memories..." oninput="renderAll()"/></div>
+      <select class="cute-select" id="filter-album" onchange="renderAll()"><option value="">All Albums</option></select>
       <select class="cute-select" id="sort" onchange="renderAll()">
-        <option value="newest">newest</option><option value="oldest">oldest</option>
+        <option value="newest">Newest</option><option value="oldest">Oldest</option>
       </select>
     </div>
     <div class="tag-row" id="tag-filters"></div>
@@ -362,38 +359,38 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
   <div id="view-timeline" class="hidden"><div id="timeline-content"></div></div>
   <div id="view-albums" class="hidden"><div class="albums-grid" id="albums-content"></div></div>
   <div id="view-upload" class="hidden">
-    <div class="info-banner">📡 memories appear <strong>live</strong> for everyone in this space instantly ✦</div>
-    <p class="section-heading">pin a new memory ✦</p>
+    <div class="info-banner">📡 Memories appear <strong>live</strong> for everyone in this space instantly ✦</div>
+    <p class="section-heading">Pin A New Memory ✦</p>
     <div class="upload-zone" onclick="document.getElementById('file-input').click()" ondragover="event.preventDefault()" ondrop="handleDrop(event)">
       <input type="file" id="file-input" accept="image/*,video/*" multiple onchange="handleFiles(this.files)" style="display:none"/>
       <div class="upload-icon">📷</div>
-      <p><strong>drop photos & videos here</strong><br/><small>click to browse · jpg, png, gif, mp4, mov</small></p>
+      <p><strong>Drop Photos & Videos Here</strong><br/><small>Click to browse · jpg, png, gif, mp4, mov</small></p>
     </div>
     <div class="file-previews" id="file-previews"></div>
     <div class="form-section">
       <div class="form-row">
-        <div class="form-col"><label class="form-label">title</label><input class="form-input" type="text" id="inp-title" placeholder="e.g. golden hour in bandra"/></div>
-        <div class="form-col"><label class="form-label">date</label><input class="form-input" type="date" id="inp-date"/></div>
+        <div class="form-col"><label class="form-label">Title</label><input class="form-input" type="text" id="inp-title" placeholder="e.g. Golden Hour In Bandra"/></div>
+        <div class="form-col"><label class="form-label">Date</label><input class="form-input" type="date" id="inp-date"/></div>
       </div>
       <div class="form-row">
-        <div class="form-col"><label class="form-label">album</label><input class="form-input" type="text" id="inp-album" placeholder="e.g. goa trip" list="album-dl"/><datalist id="album-dl"></datalist></div>
-        <div class="form-col"><label class="form-label">tags</label><input class="form-input" type="text" id="inp-tags" placeholder="family, sunset, vibes"/></div>
+        <div class="form-col"><label class="form-label">Album</label><input class="form-input" type="text" id="inp-album" placeholder="e.g. Goa Trip" list="album-dl"/><datalist id="album-dl"></datalist></div>
+        <div class="form-col"><label class="form-label">Tags</label><input class="form-input" type="text" id="inp-tags" placeholder="family, sunset, vibes"/></div>
       </div>
-      <div style="margin-bottom:16px"><label class="form-label">little note</label><textarea class="form-textarea" id="inp-note" rows="2" placeholder="write something sweet..."></textarea></div>
+      <div style="margin-bottom:16px"><label class="form-label">Little Note</label><textarea class="form-textarea" id="inp-note" rows="2" placeholder="Write something sweet..."></textarea></div>
       <div style="display:flex;align-items:center;gap:14px">
-        <button class="btn-save" id="btn-save" onclick="saveMemory()">save memory ♡</button>
-        <span class="save-msg" id="save-msg">✦ pinned!</span>
+        <button class="btn-save" id="btn-save" onclick="saveMemory()">Save Memory ♡</button>
+        <span class="save-msg" id="save-msg">✦ Pinned!</span>
       </div>
     </div>
   </div>
 </div>
 
 <!-- MEMORY DETAIL MODAL -->
-<div class="modal-overlay hidden" id="modal-detail" onclick="if(event.target===this)this.classList.add('hidden')">
+<div class="modal-overlay hidden" id="modal-detail" onclick="if(event.target===this){this.classList.add('hidden');document.body.style.overflow=''}">
   <div class="modal">
     <div class="modal-header">
       <div class="modal-title" id="det-title"></div>
-      <button class="btn-close" onclick="document.getElementById('modal-detail').classList.add('hidden')">✕</button>
+      <button class="btn-close" onclick="document.getElementById('modal-detail').classList.add('hidden');document.body.style.overflow=''">✕</button>
     </div>
     <div id="det-media"></div>
     <div class="det-meta">
@@ -404,10 +401,33 @@ body::after{content:'';position:fixed;bottom:-100px;left:-100px;width:350px;heig
     <div class="det-note" id="det-note"></div>
     <div class="det-tags" id="det-tags"></div>
     <div class="det-actions">
-      <button class="btn-action" id="btn-download" onclick="downloadMemory()">⬇ download</button>
-      <button class="btn-action hidden" id="btn-edit" onclick="openEdit()">✏️ edit</button>
-      <button class="btn-delete hidden" id="btn-del" onclick="deleteMemory()">🗑 remove</button>
+      <button class="btn-action" id="btn-download" onclick="downloadMemory()">⬇ Download</button>
+      <button class="btn-action hidden" id="btn-edit" onclick="openEdit()">✏️ Edit</button>
+      <button class="btn-delete hidden" id="btn-del" onclick="deleteMemory()">🗑 Remove</button>
     </div>
+  </div>
+</div>
+
+<!-- SLIDESHOW -->
+<div class="modal-overlay hidden" id="modal-slideshow" style="background:rgba(0,0,0,0.92);z-index:2000" onclick="if(event.target===this)closeSlideshow()">
+  <div style="width:100%;max-width:720px;position:relative;display:flex;flex-direction:column;align-items:center;gap:16px">
+    <div style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 8px">
+      <div id="ss-title" style="font-family:'Playfair Display',serif;font-size:20px;color:#fff;font-weight:600"></div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span id="ss-counter" style="font-size:13px;font-weight:700;color:rgba(255,255,255,.6)"></span>
+        <button onclick="closeSlideshow()" style="background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px">✕</button>
+      </div>
+    </div>
+    <div style="position:relative;width:100%;display:flex;align-items:center;justify-content:center">
+      <button onclick="ssNav(-1)" style="position:absolute;left:0;z-index:10;background:rgba(255,255,255,.15);border:none;color:#fff;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center">‹</button>
+      <div id="ss-media" style="width:100%;max-height:65vh;display:flex;align-items:center;justify-content:center"></div>
+      <button onclick="ssNav(1)" style="position:absolute;right:0;z-index:10;background:rgba(255,255,255,.15);border:none;color:#fff;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center">›</button>
+    </div>
+    <div id="ss-meta" style="font-size:13px;font-weight:600;color:rgba(255,255,255,.6);text-align:center"></div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button id="ss-play-btn" onclick="toggleSsPlay()" style="background:var(--violet);border:none;color:#fff;padding:8px 20px;border-radius:40px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Outfit',sans-serif">⏸ Pause</button>
+    </div>
+    <div id="ss-dots" style="display:flex;gap:5px;flex-wrap:wrap;justify-content:center;max-width:300px"></div>
   </div>
 </div>
 
@@ -429,7 +449,15 @@ function hide(id){document.getElementById(id).classList.add('hidden')}
 function setErr(id,msg){document.getElementById(id).textContent=msg}
 function randCode(){return Math.random().toString(36).substring(2,8).toUpperCase()}
 function formatDate(d){if(!d)return'';try{return new Date(d+'T12:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}catch{return d}}
-function isVideo(url){if(!url)return false;return url.startsWith('data:video')||/\.(mp4|mov|webm|ogg)$/i.test(url)}
+
+// ── THE KEY FIX: unified video detection using media_type field ──
+function isVideo(m){
+  if(!m)return false;
+  // works whether m is a memory object or a raw url string (legacy)
+  if(typeof m==='string')return m.startsWith('data:video')||/\.(mp4|mov|webm|ogg)$/i.test(m);
+  // media_type can be 'video', 'video/mp4', 'image', 'image/jpeg' etc.
+  return m.media_type==='video'||String(m.media_type||'').startsWith('video');
+}
 
 async function init(){
   sb=supabase.createClient(SB_URL,SB_KEY);
@@ -450,7 +478,7 @@ function toggleAuthTab(mode){
   authMode=mode;
   document.querySelectorAll('.auth-tab').forEach((t,i)=>t.classList.toggle('active',['login','signup'][i]===mode));
   document.getElementById('field-name').classList.toggle('hidden',mode!=='signup');
-  document.getElementById('btn-auth').textContent=mode==='login'?'sign in ♡':'create account ♡';
+  document.getElementById('btn-auth').textContent=mode==='login'?'Sign In ♡':'Create Account ♡';
   setErr('auth-err','');
 }
 async function handleAuth(){
@@ -458,22 +486,22 @@ async function handleAuth(){
   const pass=document.getElementById('inp-pass').value;
   const btn=document.getElementById('btn-auth');
   setErr('auth-err','');
-  if(!email||!pass){setErr('auth-err','fill in all fields ♡');return}
-  btn.disabled=true;btn.textContent='hold on...';
+  if(!email||!pass){setErr('auth-err','Fill in all fields ♡');return}
+  btn.disabled=true;btn.textContent='Hold on...';
   try{
     if(authMode==='signup'){
       const name=document.getElementById('inp-name').value.trim()||email.split('@')[0];
       const {error}=await sb.auth.signUp({email,password:pass,options:{data:{username:name},emailRedirectTo:'https://memories-blue-three.vercel.app'}});
       if(error)throw error;
-      setErr('auth-err','✦ check your email to confirm!');
-      btn.disabled=false;btn.textContent='create account ♡';
+      setErr('auth-err','✦ Check your email to confirm!');
+      btn.disabled=false;btn.textContent='Create Account ♡';
     }else{
       const {data,error}=await sb.auth.signInWithPassword({email,password:pass});
       if(error)throw error;
       currentUser=data.user;currentUsername=data.user.user_metadata?.username||data.user.email.split('@')[0];
       showLobby();
     }
-  }catch(e){setErr('auth-err',e.message||'something went wrong~');btn.disabled=false;btn.textContent=authMode==='login'?'sign in ♡':'create account ♡'}
+  }catch(e){setErr('auth-err',e.message||'Something went wrong~');btn.disabled=false;btn.textContent=authMode==='login'?'Sign In ♡':'Create Account ♡'}
 }
 async function handleLogout(){
   if(rtChannel)sb.removeChannel(rtChannel);
@@ -490,7 +518,7 @@ async function showLobby(){
 }
 async function loadSpaces(){
   const grid=document.getElementById('spaces-grid');
-  grid.innerHTML='<div class="space-card new-space-card" onclick="openCreateModal()"><div class="plus">✦</div><p>create a space</p></div>';
+  grid.innerHTML='<div class="space-card new-space-card" onclick="openCreateModal()"><div class="plus">✦</div><p>Create A Space</p></div>';
   const {data:rows}=await sb.from('space_members').select('space_id').eq('user_id',currentUser.id);
   if(!rows?.length)return;
   const ids=rows.map(r=>r.space_id);
@@ -501,7 +529,7 @@ async function loadSpaces(){
     const c=counts?.filter(m=>m.space_id===sp.id).length||0;
     const card=document.createElement('div');
     card.className='space-card';
-    card.innerHTML=`<div class="space-emoji">${sp.emoji||'✨'}</div><div class="space-name">${esc(sp.name)}</div><div class="space-code">code: ${sp.code}</div><div class="space-count">${c} memor${c===1?'y':'ies'}</div>`;
+    card.innerHTML=`<div class="space-emoji">${sp.emoji||'✨'}</div><div class="space-name">${esc(sp.name)}</div><div class="space-code">Code: ${sp.code}</div><div class="space-count">${c} Memor${c===1?'y':'ies'}</div>`;
     card.onclick=()=>enterSpace(sp);
     grid.insertBefore(card,grid.firstChild);
   });
@@ -515,23 +543,23 @@ function selEmoji(el){document.querySelectorAll('.emoji-opt').forEach(e=>e.class
 function getEmoji(){const a=document.querySelector('.emoji-opt.active');return a?a.textContent:'✨'}
 async function createSpace(){
   const name=document.getElementById('cs-name').value.trim();
-  if(!name){setErr('cs-err','give your space a name!');return}
-  const btn=document.getElementById('btn-cs');btn.disabled=true;btn.textContent='creating...';
+  if(!name){setErr('cs-err','Give your space a name!');return}
+  const btn=document.getElementById('btn-cs');btn.disabled=true;btn.textContent='Creating...';
   try{
     const code=randCode();
     const {data:sp,error}=await sb.from('spaces').insert({name,emoji:getEmoji(),code,created_by:currentUser.id}).select().single();
     if(error)throw error;
     await sb.from('space_members').insert({space_id:sp.id,user_id:currentUser.id,username:currentUsername});
     hide('modal-create');enterSpace(sp);
-  }catch(e){setErr('cs-err',e.message||'could not create~')}
-  finally{btn.disabled=false;btn.textContent='create space ♡'}
+  }catch(e){setErr('cs-err',e.message||'Could not create~')}
+  finally{btn.disabled=false;btn.textContent='Create Space ♡'}
 }
 async function joinSpace(){
   const code=document.getElementById('inp-join').value.trim().toUpperCase();
   setErr('join-err','');
-  if(!code){setErr('join-err','enter a code!');return}
+  if(!code){setErr('join-err','Enter a code!');return}
   const {data:sp,error}=await sb.from('spaces').select('*').eq('code',code).single();
-  if(error||!sp){setErr('join-err','space not found~ check the code!');return}
+  if(error||!sp){setErr('join-err','Space not found~ Check the code!');return}
   await sb.from('space_members').upsert({space_id:sp.id,user_id:currentUser.id,username:currentUsername},{onConflict:'space_id,user_id'});
   document.getElementById('inp-join').value='';enterSpace(sp);
 }
@@ -540,7 +568,7 @@ async function joinSpace(){
 async function enterSpace(sp){
   currentSpace=sp;hide('lobby-view');show('app-view');
   document.getElementById('app-space-title').innerHTML=`${sp.emoji||'✨'} ${esc(sp.name)}`;
-  document.getElementById('app-space-code').innerHTML=`code: <strong>${sp.code}</strong> — share to invite ♡`;
+  document.getElementById('app-space-code').innerHTML=`Code: <strong>${sp.code}</strong> — Share To Invite ♡`;
   document.getElementById('inp-date').value=today;
   memories=[];globalTags=[];
   await loadMemories();subscribeRealtime();switchTab('all');
@@ -552,7 +580,7 @@ async function loadMemories(){
 async function updateLiveLabel(){
   const {data}=await sb.from('space_members').select('username').eq('space_id',currentSpace.id);
   const c=data?.length||1;
-  document.getElementById('live-label').textContent=`${c} member${c!==1?'s':''} ✦`;
+  document.getElementById('live-label').textContent=`${c} Member${c!==1?'s':''} ✦`;
 }
 function subscribeRealtime(){
   if(rtChannel)sb.removeChannel(rtChannel);
@@ -570,23 +598,23 @@ async function openSettings(){
   document.getElementById('edit-name').value=currentSpace.name;setErr('settings-err','');
   document.getElementById('danger-zone').classList.toggle('hidden',currentSpace.created_by!==currentUser.id);
   const {data}=await sb.from('space_members').select('username').eq('space_id',currentSpace.id);
-  document.getElementById('settings-members').innerHTML=`<div style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px">members</div>`+(data||[]).map(m=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--vl)"><div style="width:26px;height:26px;border-radius:50%;background:var(--pp);border:2px solid var(--pl);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--pink)">${m.username[0].toUpperCase()}</div><span style="font-size:13px;font-weight:700;color:var(--text)">${esc(m.username)}</span>${m.username===currentUsername?'<span style="font-size:10px;font-weight:700;color:var(--muted);margin-left:auto">you</span>':''}</div>`).join('');
+  document.getElementById('settings-members').innerHTML=`<div style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px">Members</div>`+(data||[]).map(m=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--vl)"><div style="width:26px;height:26px;border-radius:50%;background:var(--pp);border:2px solid var(--pl);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--pink)">${m.username[0].toUpperCase()}</div><span style="font-size:13px;font-weight:700;color:var(--text)">${esc(m.username)}</span>${m.username===currentUsername?'<span style="font-size:10px;font-weight:700;color:var(--muted);margin-left:auto">You</span>':''}</div>`).join('');
   show('modal-settings');
 }
-function copyCode(){navigator.clipboard.writeText(currentSpace.code).catch(()=>{});const btn=event.target;btn.textContent='copied!';setTimeout(()=>btn.textContent='copy code',2000)}
+function copyCode(btn){navigator.clipboard.writeText(currentSpace.code).catch(()=>{});btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy Code',2000)}
 async function updateSpace(){
   const name=document.getElementById('edit-name').value.trim();
-  if(!name){setErr('settings-err','name cannot be empty!');return}
-  const btn=document.getElementById('btn-update');btn.disabled=true;btn.textContent='saving...';
+  if(!name){setErr('settings-err','Name cannot be empty!');return}
+  const btn=document.getElementById('btn-update');btn.disabled=true;btn.textContent='Saving...';
   try{
     const {error}=await sb.from('spaces').update({name}).eq('id',currentSpace.id);
     if(error)throw error;
     currentSpace.name=name;document.getElementById('app-space-title').innerHTML=`${currentSpace.emoji||'✨'} ${esc(name)}`;hide('modal-settings');
-  }catch(e){setErr('settings-err','could not update~')}
-  finally{btn.disabled=false;btn.textContent='save changes ♡'}
+  }catch(e){setErr('settings-err','Could not update~')}
+  finally{btn.disabled=false;btn.textContent='Save Changes ♡'}
 }
 async function deleteSpace(){
-  if(!confirm('delete this space? this cannot be undone!'))return;
+  if(!confirm('Delete this space? This cannot be undone!'))return;
   const {error}=await sb.from('spaces').delete().eq('id',currentSpace.id);
   if(!error){hide('modal-settings');goToLobby()}
 }
@@ -617,16 +645,19 @@ function getFiltered(){
 // ── CARD HTML ──
 function mediaThumb(m){
   if(!m.data_url)return`<div class="mcard-ph">📷</div>`;
-  if(isVideo(m.data_url))return`<div style="position:relative"><video src="${esc(m.data_url)}" muted playsinline preload="metadata" style="width:100%;display:block;object-fit:cover;aspect-ratio:4/3;background:#111;pointer-events:none"></video><span class="video-badge">▶ video</span></div>`;
-  return`<img src="${esc(m.data_url)}" alt="${esc(m.title)}" loading="lazy">`;
+  // show thumbnail image for both photos and videos (video stores thumbnail as jpeg)
+  return`<div style="position:relative">
+    <img src="${esc(m.data_url)}" alt="${esc(m.title)}" loading="lazy" style="width:100%;display:block;object-fit:cover">
+    ${isVideo(m)?'<span class="video-badge">▶ Video</span>':''}
+  </div>`;
 }
 function cardHTML(m){
   const tags=(m.tags||[]).slice(0,3).map((t,i)=>`<span class="${tagCls(i)}">${esc(t)}</span>`).join('');
-  return`<div class="mcard-wrap"><div class="mcard" onclick="openDetail('${m.id}')">${mediaThumb(m)}<div class="mcard-body"><div class="mcard-title">${esc(m.title||'untitled')}</div><div class="mcard-meta">${formatDate(m.date)}${m.album?' · '+esc(m.album):''}${m.username?' · '+esc(m.username):''}</div>${tags?`<div class="mcard-tags">${tags}</div>`:''}</div></div><button class="fav-btn${m.fav?' on':''}" onclick="event.stopPropagation();toggleFav('${m.id}')">${m.fav?'♥':'♡'}</button></div>`;
+  return`<div class="mcard-wrap"><div class="mcard" onclick="openDetail('${m.id}')">${mediaThumb(m)}<div class="mcard-body"><div class="mcard-title">${esc(m.title||'Untitled')}</div><div class="mcard-meta">${formatDate(m.date)}${m.album?' · '+esc(m.album):''}${m.username?' · '+esc(m.username):''}</div>${tags?`<div class="mcard-tags">${tags}</div>`:''}</div></div><button class="fav-btn${m.fav?' on':''}" onclick="event.stopPropagation();toggleFav('${m.id}')">${m.fav?'♥':'♡'}</button></div>`;
 }
 
-function renderAll(){renderTagFilters();refreshAlbumSelect();renderStats();const list=getFiltered(),g=document.getElementById('memory-grid');if(!list.length){g.innerHTML='<div class="no-results"><span style="font-size:42px;display:block;margin-bottom:10px">🌸</span><p>no memories found~</p></div>';return}g.innerHTML=list.map(cardHTML).join('')}
-function renderStats(){const f=memories.filter(m=>m.fav).length,a=[...new Set(memories.map(m=>m.album).filter(Boolean))].length;document.getElementById('stats-row').innerHTML=`<div class="stat-pill"><strong>${memories.length}</strong> memories</div><div class="stat-pill"><strong>${a}</strong> albums</div><div class="stat-pill"><strong>${f}</strong> favourites ♡</div>`}
+function renderAll(){renderTagFilters();refreshAlbumSelect();renderStats();const list=getFiltered(),g=document.getElementById('memory-grid');if(!list.length){g.innerHTML='<div class="no-results"><span style="font-size:42px;display:block;margin-bottom:10px">🌸</span><p>No Memories Found~</p></div>';return}g.innerHTML=list.map(cardHTML).join('')}
+function renderStats(){const f=memories.filter(m=>m.fav).length,a=[...new Set(memories.map(m=>m.album).filter(Boolean))].length;document.getElementById('stats-row').innerHTML=`<div class="stat-pill"><strong>${memories.length}</strong> Memories</div><div class="stat-pill"><strong>${a}</strong> Albums</div><div class="stat-pill"><strong>${f}</strong> Favourites ♡</div>`}
 function syncGlobalTags(){const f=[...new Set(memories.flatMap(m=>m.tags||[]))];globalTags=[...new Set([...globalTags,...f])]}
 function renderTagFilters(){
   syncGlobalTags();
@@ -635,26 +666,23 @@ function renderTagFilters(){
   globalTags.forEach(t=>{const s=document.createElement('span');s.className='tag'+(activeTagFilters.has(t)?' active':'');s.onclick=()=>toggleTag(t);s.innerHTML=`${esc(t)}<button class="tag-del" onclick="event.stopPropagation();delTag('${esc(t)}')">✕</button>`;row.appendChild(s)});
   row.appendChild(addWrap||createAddWrap());
 }
-function createAddWrap(){const w=document.createElement('div');w.className='tag-add-wrap';w.innerHTML=`<input class="tag-add-input" id="tag-add-input" type="text" placeholder="+ new tag" maxlength="24" onkeydown="if(event.key==='Enter')addTag()"/><button class="tag-add-btn" onclick="addTag()">+</button>`;return w}
+function createAddWrap(){const w=document.createElement('div');w.className='tag-add-wrap';w.innerHTML=`<input class="tag-add-input" id="tag-add-input" type="text" placeholder="+ New Tag" maxlength="24" onkeydown="if(event.key==='Enter')addTag()"/><button class="tag-add-btn" onclick="addTag()">+</button>`;return w}
 function addTag(){const i=document.getElementById('tag-add-input'),v=i.value.trim().toLowerCase();if(v&&!globalTags.includes(v))globalTags.push(v);i.value='';renderTagFilters()}
 function delTag(t){globalTags=globalTags.filter(x=>x!==t);activeTagFilters.delete(t);renderTagFilters();renderAll()}
 function toggleTag(t){activeTagFilters.has(t)?activeTagFilters.delete(t):activeTagFilters.add(t);renderAll()}
-function refreshAlbumSelect(){const sel=document.getElementById('filter-album'),val=sel.value,albums=[...new Set(memories.map(m=>m.album).filter(Boolean))];sel.innerHTML='<option value="">all albums</option>'+albums.map(a=>`<option value="${esc(a)}"${val===a?' selected':''}>${esc(a)}</option>`).join('')}
+function refreshAlbumSelect(){const sel=document.getElementById('filter-album'),val=sel.value,albums=[...new Set(memories.map(m=>m.album).filter(Boolean))];sel.innerHTML='<option value="">All Albums</option>'+albums.map(a=>`<option value="${esc(a)}"${val===a?' selected':''}>${esc(a)}</option>`).join('')}
 function refreshAlbumDl(){const dl=document.getElementById('album-dl'),albums=[...new Set(memories.map(m=>m.album).filter(Boolean))];dl.innerHTML=albums.map(a=>`<option value="${esc(a)}">`).join('')}
 async function toggleFav(id){const m=memories.find(x=>x.id===id);if(!m)return;m.fav=!m.fav;await sb.from('memories').update({fav:m.fav}).eq('id',id);renderAll()}
 
-// ── TIMELINE — strictly chronological ──
+// ── TIMELINE — chronological (oldest first) ──
 function renderTimeline(){
-  if(!memories.length){document.getElementById('timeline-content').innerHTML='<div class="empty-state"><span class="ei">🕰️</span><p>your story starts here ✦</p></div>';return}
-  // sort newest first using date, fallback to created_at
+  if(!memories.length){document.getElementById('timeline-content').innerHTML='<div class="empty-state"><span class="ei">🕰️</span><p>Your Story Starts Here ✦</p></div>';return}
   const sorted=[...memories].sort((a,b)=>{
     const da=new Date(a.date?a.date+'T12:00:00':a.created_at);
     const db=new Date(b.date?b.date+'T12:00:00':b.created_at);
-    return db-da;
+    return da-db;
   });
-  // group by year-month key so ordering is correct
-  const groups={};
-  const groupOrder=[];
+  const groups={},groupOrder=[];
   sorted.forEach(m=>{
     const d=new Date(m.date?m.date+'T12:00:00':m.created_at);
     const sortKey=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
@@ -662,25 +690,24 @@ function renderTimeline(){
     if(!groups[sortKey]){groups[sortKey]={label,items:[]};groupOrder.push(sortKey)}
     groups[sortKey].items.push(m);
   });
-  // groupOrder is already newest-first because sorted array is newest-first
   document.getElementById('timeline-content').innerHTML=groupOrder.map(key=>`<div class="timeline-group"><div class="timeline-month"><span class="dot"></span>${groups[key].label}</div><div class="masonry">${groups[key].items.map(cardHTML).join('')}</div></div>`).join('');
 }
 
 // ── ALBUMS ──
 function renderAlbums(){
-  const map={};memories.forEach(m=>{const a=m.album||'uncategorized';if(!map[a])map[a]={count:0,thumb:null};map[a].count++;if(!map[a].thumb&&m.data_url&&!isVideo(m.data_url))map[a].thumb=m.data_url});
+  const map={};memories.forEach(m=>{const a=m.album||'Uncategorized';if(!map[a])map[a]={count:0,thumb:null};map[a].count++;if(!map[a].thumb&&m.data_url&&!isVideo(m))map[a].thumb=m.data_url});
   const c=document.getElementById('albums-content');
-  if(!Object.keys(map).length){c.innerHTML='<div class="empty-state"><span class="ei">📁</span><p>no albums yet~</p></div>';return}
-  c.innerHTML=Object.entries(map).map(([name,data])=>`<div class="album-card" onclick="filterAlbum('${esc(name)}')">${data.thumb?`<img class="album-thumb" src="${data.thumb}" alt="${esc(name)}">`:`<div class="album-thumb-ph">📁</div>`}<div class="album-info"><div class="album-name">${esc(name)}</div><div class="album-count">${data.count} memor${data.count===1?'y':'ies'}</div></div></div>`).join('');
+  if(!Object.keys(map).length){c.innerHTML='<div class="empty-state"><span class="ei">📁</span><p>No Albums Yet~</p></div>';return}
+  c.innerHTML=Object.entries(map).map(([name,data])=>`<div class="album-card" onclick="filterAlbum('${esc(name)}')">${data.thumb?`<img class="album-thumb" src="${data.thumb}" alt="${esc(name)}">`:`<div class="album-thumb-ph">📁</div>`}<div class="album-info"><div class="album-name">${esc(name)}</div><div class="album-count">${data.count} Memor${data.count===1?'y':'ies'}</div></div></div>`).join('');
 }
-function filterAlbum(name){switchTab('all');setTimeout(()=>{document.getElementById('filter-album').value=name==='uncategorized'?'':name;renderAll()},50)}
+function filterAlbum(name){switchTab('all');setTimeout(()=>{document.getElementById('filter-album').value=name==='Uncategorized'?'':name;renderAll()},50)}
 
-// ── FILE UPLOAD with auto-date ──
+// ── FILE UPLOAD ──
 function handleDrop(e){e.preventDefault();handleFiles(e.dataTransfer.files)}
 
-function compressImage(file, maxW=1200, quality=0.75){
+function compressImage(file,maxW=1200,quality=0.75){
   return new Promise(resolve=>{
-    if(!file.type.startsWith('image')){const r=new FileReader();r.onload=e=>resolve({dataUrl:e.target.result,type:file.type});r.readAsDataURL(file);return}
+    if(!file.type.startsWith('image')){resolve({dataUrl:null,type:file.type});return}
     const img=new Image();
     const url=URL.createObjectURL(file);
     img.onload=()=>{
@@ -692,7 +719,26 @@ function compressImage(file, maxW=1200, quality=0.75){
       canvas.getContext('2d').drawImage(img,0,0,w,h);
       resolve({dataUrl:canvas.toDataURL('image/jpeg',quality),type:'image/jpeg'});
     };
+    img.onerror=()=>resolve({dataUrl:null,type:file.type});
     img.src=url;
+  });
+}
+
+function extractVideoThumbnail(file){
+  return new Promise(resolve=>{
+    const video=document.createElement('video');
+    const url=URL.createObjectURL(file);
+    video.src=url;video.muted=true;video.playsInline=true;
+    video.onloadeddata=()=>{video.currentTime=1};
+    video.onseeked=()=>{
+      const canvas=document.createElement('canvas');
+      canvas.width=640;canvas.height=Math.round(video.videoHeight*640/video.videoWidth)||360;
+      canvas.getContext('2d').drawImage(video,0,0,canvas.width,canvas.height);
+      URL.revokeObjectURL(url);
+      resolve(canvas.toDataURL('image/jpeg',0.7));
+    };
+    video.onerror=()=>{URL.revokeObjectURL(url);resolve(null)};
+    video.load();
   });
 }
 
@@ -702,10 +748,21 @@ async function handleFiles(files){
   for(const file of Array.from(files)){
     const fileDate=new Date(file.lastModified);
     if(!latestDate||fileDate>latestDate)latestDate=fileDate;
-    const compressed=await compressImage(file);
-    pendingFiles.push({dataUrl:compressed.dataUrl,type:compressed.type,name:file.name});
-    if(file.type.startsWith('image')){const img=document.createElement('img');img.src=compressed.dataUrl;img.style.cssText='width:80px;height:64px;object-fit:cover;border-radius:10px;border:2px solid var(--vl)';prev.appendChild(img)}
-    else{const v=document.createElement('video');v.src=compressed.dataUrl;v.muted=true;v.style.cssText='width:80px;height:64px;object-fit:cover;border-radius:10px;border:2px solid var(--vl)';prev.appendChild(v)}
+    if(file.type.startsWith('video')){
+      const thumb=await extractVideoThumbnail(file);
+      pendingFiles.push({dataUrl:thumb,type:'video',name:file.name,isVideo:true});
+      const wrap=document.createElement('div');
+      wrap.style.cssText='position:relative;width:80px;height:64px;border-radius:10px;overflow:hidden;border:2px solid var(--vl);flex-shrink:0';
+      if(thumb){const img=document.createElement('img');img.src=thumb;img.style.cssText='width:100%;height:100%;object-fit:cover';wrap.appendChild(img)}
+      const badge=document.createElement('div');
+      badge.style.cssText='position:absolute;bottom:3px;left:3px;background:rgba(0,0,0,.6);color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:10px';
+      badge.textContent='▶ Video';wrap.appendChild(badge);
+      prev.appendChild(wrap);
+    }else{
+      const compressed=await compressImage(file);
+      pendingFiles.push({dataUrl:compressed.dataUrl,type:'image/jpeg',name:file.name,isVideo:false});
+      if(compressed.dataUrl){const img=document.createElement('img');img.src=compressed.dataUrl;img.style.cssText='width:80px;height:64px;object-fit:cover;border-radius:10px;border:2px solid var(--vl)';prev.appendChild(img)}
+    }
   }
   if(files.length){
     if(!document.getElementById('inp-title').value)document.getElementById('inp-title').value=files[0].name.replace(/\.[^.]+$/,'');
@@ -714,29 +771,32 @@ async function handleFiles(files){
 }
 
 async function saveMemory(){
-  const title=document.getElementById('inp-title').value.trim()||'untitled';
+  const title=document.getElementById('inp-title').value.trim()||'Untitled';
   const date=document.getElementById('inp-date').value||today;
   const album=document.getElementById('inp-album').value.trim()||null;
   const tags=document.getElementById('inp-tags').value.split(',').map(t=>t.trim().toLowerCase()).filter(Boolean);
   const note=document.getElementById('inp-note').value.trim()||null;
-  const btn=document.getElementById('btn-save');btn.disabled=true;btn.textContent='saving...';
+  const btn=document.getElementById('btn-save');btn.disabled=true;btn.textContent='Saving...';
   try{
-    const rows=pendingFiles.length?pendingFiles.map((f,i)=>({space_id:currentSpace.id,user_id:currentUser.id,username:currentUsername,title:pendingFiles.length>1?title+' '+(i+1):title,date,album,tags,note,data_url:f.dataUrl,media_type:f.type,fav:false})):[{space_id:currentSpace.id,user_id:currentUser.id,username:currentUsername,title,date,album,tags,note,data_url:null,media_type:null,fav:false}];
+    // media_type stored as 'video' or 'image' — simple and consistent
+    const rows=pendingFiles.length
+      ?pendingFiles.map((f,i)=>({space_id:currentSpace.id,user_id:currentUser.id,username:currentUsername,title:pendingFiles.length>1?title+' '+(i+1):title,date,album,tags,note,data_url:f.dataUrl,media_type:f.isVideo?'video':'image',fav:false}))
+      :[{space_id:currentSpace.id,user_id:currentUser.id,username:currentUsername,title,date,album,tags,note,data_url:null,media_type:null,fav:false}];
     const {error}=await sb.from('memories').insert(rows);
     if(error)throw error;
     pendingFiles=[];document.getElementById('file-previews').innerHTML='';
     ['inp-title','inp-album','inp-tags','inp-note'].forEach(id=>document.getElementById(id).value='');
     document.getElementById('inp-date').value=today;document.getElementById('file-input').value='';
     const msg=document.getElementById('save-msg');msg.classList.add('show');setTimeout(()=>msg.classList.remove('show'),2500);
-  }catch(e){alert('could not save: '+e.message)}
-  finally{btn.disabled=false;btn.textContent='save memory ♡'}
+  }catch(e){alert('Could not save: '+e.message)}
+  finally{btn.disabled=false;btn.textContent='Save Memory ♡'}
 }
 
 // ── DETAIL MODAL ──
 function openDetail(id){
   const m=memories.find(x=>x.id===id);if(!m)return;
   currentDetailId=id;
-  document.getElementById('det-title').textContent=m.title||'untitled';
+  document.getElementById('det-title').textContent=m.title||'Untitled';
   document.getElementById('det-date').textContent=formatDate(m.date);
   document.getElementById('det-album').textContent=m.album||'—';
   document.getElementById('det-author').textContent=m.username||'—';
@@ -744,8 +804,9 @@ function openDetail(id){
   document.getElementById('det-tags').innerHTML=(m.tags||[]).map((t,i)=>`<span class="${tagCls(i)}">${esc(t)}</span>`).join('');
   let mediaHtml='<div class="det-ph">📷</div>';
   if(m.data_url){
-    if(isVideo(m.data_url))mediaHtml=`<video class="det-video" src="${esc(m.data_url)}" controls playsinline></video>`;
-    else mediaHtml=`<img class="det-img" src="${esc(m.data_url)}" alt="${esc(m.title)}">`;
+    // always show as image (videos stored as thumbnail jpeg)
+    mediaHtml=`<img class="det-img" src="${esc(m.data_url)}" alt="${esc(m.title)}">`;
+    if(isVideo(m))mediaHtml+=`<div style="text-align:center;margin-top:-8px;margin-bottom:12px;font-size:12px;font-weight:700;color:var(--muted)">▶ Video Preview (Thumbnail)</div>`;
   }
   document.getElementById('det-media').innerHTML=mediaHtml;
   const isOwner=m.user_id===currentUser.id;
@@ -760,8 +821,7 @@ function downloadMemory(){
   const m=memories.find(x=>x.id===currentDetailId);if(!m||!m.data_url)return;
   const a=document.createElement('a');
   a.href=m.data_url;
-  const ext=isVideo(m.data_url)?'mp4':'jpg';
-  a.download=(m.title||'memory')+'.'+ext;
+  a.download=(m.title||'memory')+(isVideo(m)?'-thumb.jpg':'.jpg');
   a.click();
 }
 
@@ -769,12 +829,8 @@ function downloadMemory(){
 function openEdit(){
   const m=memories.find(x=>x.id===currentDetailId);if(!m)return;
   editNewFile=null;
-  // show current media preview
   let prevHtml='';
-  if(m.data_url){
-    if(isVideo(m.data_url))prevHtml=`<video class="edit-media-preview" src="${esc(m.data_url)}" controls muted></video>`;
-    else prevHtml=`<img class="edit-media-preview" src="${esc(m.data_url)}" alt="current">`;
-  }
+  if(m.data_url)prevHtml=`<img class="edit-media-preview" src="${esc(m.data_url)}" alt="current">`;
   document.getElementById('edit-media-preview-wrap').innerHTML=prevHtml;
   document.getElementById('edit-title').value=m.title||'';
   document.getElementById('edit-date').value=m.date||'';
@@ -783,37 +839,46 @@ function openEdit(){
   document.getElementById('edit-note').value=m.note||'';
   document.getElementById('edit-file-input').value='';
   setErr('edit-err','');
-  hide('modal-detail');show('modal-edit');
+  hide('modal-detail');document.body.style.overflow='';show('modal-edit');
 }
 
 async function handleEditFile(files){
   if(!files.length)return;
   const file=files[0];
-  const compressed=await compressImage(file);
-  editNewFile={dataUrl:compressed.dataUrl,type:compressed.type};
-  const wrap=document.getElementById('edit-media-preview-wrap');
-  if(file.type.startsWith('video'))wrap.innerHTML=`<video class="edit-media-preview" src="${compressed.dataUrl}" controls muted></video>`;
-  else wrap.innerHTML=`<img class="edit-media-preview" src="${compressed.dataUrl}" alt="new">`;
+  let dataUrl,mediaType;
+  if(file.type.startsWith('video')){
+    dataUrl=await extractVideoThumbnail(file);
+    mediaType='video'; // always store as simple 'video'
+  }else{
+    const compressed=await compressImage(file);
+    dataUrl=compressed.dataUrl;
+    mediaType='image'; // always store as simple 'image'
+  }
+  editNewFile={dataUrl,mediaType};
+  document.getElementById('edit-media-preview-wrap').innerHTML=`<img class="edit-media-preview" src="${dataUrl}" alt="new">`;
   document.getElementById('edit-date').value=new Date(file.lastModified).toISOString().split('T')[0];
 }
 
 async function saveEdit(){
   const m=memories.find(x=>x.id===currentDetailId);if(!m)return;
-  const btn=document.getElementById('btn-edit-save');btn.disabled=true;btn.textContent='saving...';
+  const btn=document.getElementById('btn-edit-save');btn.disabled=true;btn.textContent='Saving...';
   try{
     const updates={
-      title:document.getElementById('edit-title').value.trim()||'untitled',
+      title:document.getElementById('edit-title').value.trim()||'Untitled',
       date:document.getElementById('edit-date').value||null,
       album:document.getElementById('edit-album').value.trim()||null,
       tags:document.getElementById('edit-tags').value.split(',').map(t=>t.trim().toLowerCase()).filter(Boolean),
       note:document.getElementById('edit-note').value.trim()||null,
     };
-    if(editNewFile){updates.data_url=editNewFile.dataUrl;updates.media_type=editNewFile.type}
+    if(editNewFile){
+      updates.data_url=editNewFile.dataUrl;
+      updates.media_type=editNewFile.mediaType; // 'image' or 'video' — clean value
+    }
     const {error}=await sb.from('memories').update(updates).eq('id',currentDetailId);
     if(error)throw error;
     hide('modal-edit');
-  }catch(e){setErr('edit-err','could not save: '+e.message)}
-  finally{btn.disabled=false;btn.textContent='save changes ♡'}
+  }catch(e){setErr('edit-err','Could not save: '+e.message)}
+  finally{btn.disabled=false;btn.textContent='Save Changes ♡'}
 }
 
 async function deleteMemory(){
@@ -823,48 +888,36 @@ async function deleteMemory(){
 }
 
 // ── SLIDESHOW ──
-let ssIndex=0, ssItems=[], ssTimer=null, ssPlaying=true;
-
+let ssIndex=0,ssItems=[],ssTimer=null,ssPlaying=true;
 function openSlideshow(){
   ssItems=getFiltered().filter(m=>m.data_url);
-  if(!ssItems.length){alert('no memories with photos to show!');return}
+  if(!ssItems.length){alert('No Memories With Photos To Show!');return}
   ssIndex=0;ssPlaying=true;
-  show('modal-slideshow');
-  document.body.style.overflow='hidden';
-  renderSsSlide();
-  startSsTimer();
+  show('modal-slideshow');document.body.style.overflow='hidden';
+  renderSsSlide();startSsTimer();
 }
-
 function closeSlideshow(){
-  hide('modal-slideshow');
-  document.body.style.overflow='';
+  hide('modal-slideshow');document.body.style.overflow='';
   if(ssTimer)clearInterval(ssTimer);
 }
-
 function renderSsSlide(){
-  const m=ssItems[ssIndex];
-  if(!m)return;
-  document.getElementById('ss-title').textContent=m.title||'untitled';
+  const m=ssItems[ssIndex];if(!m)return;
+  document.getElementById('ss-title').textContent=m.title||'Untitled';
   document.getElementById('ss-counter').textContent=`${ssIndex+1} / ${ssItems.length}`;
   document.getElementById('ss-meta').textContent=`${formatDate(m.date)}${m.album?' · '+m.album:''}${m.username?' · '+m.username:''}`;
   const media=document.getElementById('ss-media');
-  if(isVideo(m.data_url))media.innerHTML=`<video src="${esc(m.data_url)}" autoplay muted loop style="max-width:100%;max-height:60vh;border-radius:12px;object-fit:contain"></video>`;
-  else media.innerHTML=`<img src="${esc(m.data_url)}" style="max-width:100%;max-height:60vh;border-radius:12px;object-fit:contain;animation:fadeIn .4s ease">`;
-  // dots
+  media.innerHTML=`<img src="${esc(m.data_url)}" style="max-width:100%;max-height:60vh;border-radius:12px;object-fit:contain;animation:fadeIn .4s ease" alt="${esc(m.title)}">${isVideo(m)?'<div style="text-align:center;margin-top:6px;font-size:12px;font-weight:700;color:rgba(255,255,255,.5)">▶ Video</div>':''}`;
   document.getElementById('ss-dots').innerHTML=ssItems.map((_,i)=>`<div style="width:${i===ssIndex?20:6}px;height:6px;border-radius:10px;background:${i===ssIndex?'#fff':'rgba(255,255,255,.3)'};transition:all .3s"></div>`).join('');
 }
-
 function ssNav(dir){
   ssIndex=(ssIndex+dir+ssItems.length)%ssItems.length;
   renderSsSlide();
   if(ssPlaying){if(ssTimer)clearInterval(ssTimer);startSsTimer();}
 }
-
 function startSsTimer(){ssTimer=setInterval(()=>ssNav(1),4000)}
-
 function toggleSsPlay(){
   ssPlaying=!ssPlaying;
-  document.getElementById('ss-play-btn').textContent=ssPlaying?'⏸ pause':'▶ play';
+  document.getElementById('ss-play-btn').textContent=ssPlaying?'⏸ Pause':'▶ Play';
   if(ssPlaying)startSsTimer();else if(ssTimer)clearInterval(ssTimer);
 }
 
@@ -873,34 +926,15 @@ document.addEventListener('keydown',e=>{
     if(e.key==='ArrowRight')ssNav(1);
     else if(e.key==='ArrowLeft')ssNav(-1);
     else if(e.key==='Escape')closeSlideshow();
-  } else if(e.key==='Escape'){['modal-detail','modal-settings','modal-create','modal-edit'].forEach(id=>{if(!document.getElementById(id).classList.contains('hidden')){document.getElementById(id).classList.add('hidden');document.body.style.overflow=''}})}
+  }else if(e.key==='Escape'){
+    ['modal-detail','modal-settings','modal-create','modal-edit'].forEach(id=>{
+      if(!document.getElementById(id).classList.contains('hidden')){document.getElementById(id).classList.add('hidden');document.body.style.overflow=''}
+    });
+  }
 });
 
 init();
 </script>
-<!-- SLIDESHOW -->
-<div class="modal-overlay hidden" id="modal-slideshow" style="background:rgba(0,0,0,0.92);z-index:2000" onclick="if(event.target===this)closeSlideshow()">
-  <div style="width:100%;max-width:720px;position:relative;display:flex;flex-direction:column;align-items:center;gap:16px">
-    <div style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 8px">
-      <div id="ss-title" style="font-family:'Playfair Display',serif;font-size:20px;color:#fff;font-weight:600"></div>
-      <div style="display:flex;align-items:center;gap:10px">
-        <span id="ss-counter" style="font-size:13px;font-weight:700;color:rgba(255,255,255,.6)"></span>
-        <button onclick="closeSlideshow()" style="background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px">✕</button>
-      </div>
-    </div>
-    <div style="position:relative;width:100%;display:flex;align-items:center;justify-content:center">
-      <button onclick="ssNav(-1)" style="position:absolute;left:0;z-index:10;background:rgba(255,255,255,.15);border:none;color:#fff;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center">‹</button>
-      <div id="ss-media" style="width:100%;max-height:65vh;display:flex;align-items:center;justify-content:center"></div>
-      <button onclick="ssNav(1)" style="position:absolute;right:0;z-index:10;background:rgba(255,255,255,.15);border:none;color:#fff;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center">›</button>
-    </div>
-    <div id="ss-meta" style="font-size:13px;font-weight:600;color:rgba(255,255,255,.6);text-align:center"></div>
-    <div style="display:flex;gap:8px;align-items:center">
-      <button id="ss-play-btn" onclick="toggleSsPlay()" style="background:var(--violet);border:none;color:#fff;padding:8px 20px;border-radius:40px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Outfit',sans-serif">⏸ pause</button>
-    </div>
-    <div id="ss-dots" style="display:flex;gap:5px;flex-wrap:wrap;justify-content:center;max-width:300px"></div>
-  </div>
-</div>
-
 <script>
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(e=>console.log('SW:',e)))}
 </script>
